@@ -1,6 +1,6 @@
 # super-tool
 
-> A maintenance tool for SuperLAB
+> A maintenance tool
 
 ## Build Setup
 
