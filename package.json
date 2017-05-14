@@ -1,7 +1,7 @@
 {
   "name": "super-tool",
   "version": "1.0.0",
-  "description": "A maintenance tool for SuperLAB",
+  "description": "A maintenance tool",
   "author": "gonglei",
   "private": true,
   "scripts": {
