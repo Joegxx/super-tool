@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <Button type="primary">OK</Button>
-    <Icon type="checkmark" />
+  <div>Home
   </div>
 </template>
 

@@ -1,18 +1,14 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <navbar></navbar>
-    <transition name="fade" mode="out-in">
-      <router-view></router-view>
-    </transition>
+    <layout></layout>
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar'
+import Layout from './components/Layout'
 export default {
   name: 'app',
-  components: { Navbar }
+  components: { Layout }
 }
 </script>
 
@@ -23,6 +19,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
