@@ -1,11 +1,21 @@
 <template>
-  <div>Home
-  </div>
+  <div>Home</div>
 </template>
 
 <script>
 export default {
-  name: 'home'
+  created () {
+    this.setActive()
+  },
+  methods: {
+    setActive () {
+      this.$store.commit('setMenu', {
+        leftMenu: {
+          activeName: ''
+        }
+      })
+    }
+  }
 }
 </script>
 

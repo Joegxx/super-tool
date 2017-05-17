@@ -1,36 +1,12 @@
 <template>
   <div class="layout">
     <div class="layout-header">
-      <Menu mode="horizontal" theme="light" active-name="1">
-        <div class="layout-logo">
-          <img src="../assets/logo.png">
-          <span>SuperTool</span>
-        </div>
-        <div class="layout-nav">
-          <Menu-item name="1">
-            <Icon type="ios-navigate"></Icon>
-            <router-link to="/">首页</router-link>
-          </Menu-item>
-          <Menu-item name="2">
-            <Icon type="ios-paper"></Icon>
-            设置
-          </Menu-item>
-        </div>
-      </Menu>
+      <top-menu :data="topMenu"></top-menu>
     </div>
     <div class="layout-content">
       <Row>
         <i-col span="5">
-          <Menu active-name="1-1" width="auto" :open-names="['1']">
-            <Submenu name="1">
-              <template slot="title">
-                <Icon type="ios-keypad"></Icon>
-                运维统计
-              </template>
-              <Menu-item name="1-1"><router-link to="/logview">日志查看</router-link></Menu-item>
-              <Menu-item name="1-2"><router-link to="/visits">访问统计</router-link></Menu-item>
-            </Submenu>
-          </Menu>
+          <left-menu :data="leftMenu"></left-menu>
         </i-col>
         <i-col span="19">
           <div class="layout-content-main">
@@ -48,12 +24,21 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import TopMenu from './TopMenu'
+import LeftMenu from './LeftMenu'
 export default {
-
+  computed: {
+    ...mapState({
+      topMenu: state => state.Layout.topMenu,
+      leftMenu: state => state.Layout.leftMenu
+    })
+  },
+  components: { TopMenu, LeftMenu }
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @header-height: 80px;
 @logo-height: 50px;
 .layout {
@@ -77,7 +62,7 @@ export default {
     display: inline-block;
     height: 100%;
   }
-  > span:extend(.layout-logo>img) {
+  > span:extend(.layout-logo > img) {
     font-size: 20px;
     color: #39f;
     vertical-align: top;
@@ -103,5 +88,15 @@ export default {
   text-align: center;
   padding: 10px 0 20px;
   color: #9ea7b4;
+}
+.ivu-menu-item > a {
+  display: block;
+  color: #657180;
+  > .ivu-icon {
+    margin-right: 6px;
+  }
+}
+.ivu-menu-light.ivu-menu-horizontal .ivu-menu-item-active > a {
+  color: #39f;
 }
 </style>

@@ -4,7 +4,18 @@
 
 <script>
 export default {
-  name: 'logview'
+  created () {
+    this.setActive()
+  },
+  methods: {
+    setActive () {
+      this.$store.commit('setMenu', {
+        leftMenu: {
+          activeName: 'logview'
+        }
+      })
+    }
+  }
 }
 </script>
 

@@ -1,13 +1,24 @@
 <template>
-  <div>Vistis</div>
+  <div>Visits</div>
 </template>
 
 <script>
 export default {
-  name: 'vistis'
+  created () {
+    this.setActive()
+  },
+  methods: {
+    setActive () {
+      this.$store.commit('setMenu', {
+        leftMenu: {
+          activeName: 'visits'
+        }
+      })
+    }
+  }
 }
 </script>
 
 <style lang="less" scoped>
-  
+
 </style>
