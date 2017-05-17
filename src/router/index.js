@@ -6,6 +6,7 @@ Vue.use(Router)
 const Home = () => import('@/views/Home')
 const LogView = () => import('@/views/LogView')
 const Visits = () => import('@/views/Visits')
+const Settings = () => import('@/views/Settings')
 
 export default new Router({
   mode: 'history',
@@ -31,6 +32,11 @@ export default new Router({
       path: '/visits',
       name: 'visits',
       component: Visits
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: Settings
     }
   ]
 })

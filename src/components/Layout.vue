@@ -89,14 +89,4 @@ export default {
   padding: 10px 0 20px;
   color: #9ea7b4;
 }
-.ivu-menu-item > a {
-  display: block;
-  color: #657180;
-  > .ivu-icon {
-    margin-right: 6px;
-  }
-}
-.ivu-menu-light.ivu-menu-horizontal .ivu-menu-item-active > a {
-  color: #39f;
-}
 </style>

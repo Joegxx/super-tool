@@ -5,13 +5,11 @@ export default {
       menus: [{
         name: 'home',
         text: '首页',
-        icon: 'navigate',
-        path: '/'
+        icon: 'navigate'
       }, {
         name: 'settings',
         text: '设置',
-        icon: 'paper',
-        path: '/'
+        icon: 'paper'
       }]
     },
     leftMenu: {
@@ -23,12 +21,10 @@ export default {
         icon: 'keypad',
         children: [{
           name: 'logview',
-          text: '日志查看',
-          path: '/logview'
+          text: '日志查看'
         }, {
           name: 'visits',
-          text: '访问统计',
-          path: '/visits'
+          text: '访问统计'
         }]
       }]
     }

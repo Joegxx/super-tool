@@ -1,5 +1,5 @@
 <template>
-  <div>LogView</div>
+  <div>Settings</div>
 </template>
 
 <script>
@@ -11,7 +11,7 @@ export default {
     setActive () {
       this.$store.commit('setMenu', {
         leftMenu: {
-          activeName: 'logview'
+          activeName: ''
         }
       })
     }
