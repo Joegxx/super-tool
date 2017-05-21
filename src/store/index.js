@@ -1,11 +1,24 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Layout from './modules/layout'
+import state from './state'
+import { SET_MENU } from './types'
+import Log from './modules/log'
+import Visit from './modules/visit'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  state,
+  getters: {
+    curLeftMenus: state => state.leftMenus[state.activeTopMenu] || []
+  },
+  mutations: {
+    [SET_MENU] (state, menu) {
+      Object.assign(state, menu)
+    }
+  },
   modules: {
-    Layout
+    Log,
+    Visit
   }
 })

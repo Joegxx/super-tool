@@ -3,17 +3,13 @@
 </template>
 
 <script>
+import mixin from '@/mixins'
 export default {
-  created () {
-    this.setActive()
-  },
-  methods: {
-    setActive () {
-      this.$store.commit('setMenu', {
-        leftMenu: {
-          activeName: 'visits'
-        }
-      })
+  mixins: [mixin],
+  data () {
+    return {
+      activeTopMenu: 'home',
+      openLeftMenus: ['operations']
     }
   }
 }

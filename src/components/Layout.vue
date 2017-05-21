@@ -1,12 +1,12 @@
 <template>
   <div class="layout">
     <div class="layout-header">
-      <top-menu :data="topMenu"></top-menu>
+      <top-menu :menus="topMenus" :active-name="activeTopMenu"></top-menu>
     </div>
     <div class="layout-content">
       <Row>
         <i-col span="5">
-          <left-menu :data="leftMenu"></left-menu>
+          <left-menu :menus="curLeftMenus" :active-name="activeLeftMenu" :open-names="openLeftMenus"></left-menu>
         </i-col>
         <i-col span="19">
           <div class="layout-content-main">
@@ -24,15 +24,17 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import TopMenu from './TopMenu'
 import LeftMenu from './LeftMenu'
 export default {
   computed: {
-    ...mapState({
-      topMenu: state => state.Layout.topMenu,
-      leftMenu: state => state.Layout.leftMenu
-    })
+    ...mapState([
+      'topMenus',
+      'activeTopMenu',
+      'activeLeftMenu',
+      'openLeftMenus']),
+    ...mapGetters(['curLeftMenus'])
   },
   components: { TopMenu, LeftMenu }
 }
