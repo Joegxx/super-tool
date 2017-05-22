@@ -3,9 +3,9 @@
 </template>
 
 <script>
-import mixin from '@/mixins'
+import { LayoutMixin } from '@/mixins'
 export default {
-  mixins: [mixin],
+  mixins: [LayoutMixin],
   data () {
     return {
       activeTopMenu: 'home',

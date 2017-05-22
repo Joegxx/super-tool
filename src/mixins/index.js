@@ -1,5 +1,6 @@
 import { SET_MENU } from '@/store/types'
-export default {
+
+export const LayoutMixin = {
   data () {
     return {
       activeTopMenu: this.$route.name,
@@ -16,3 +17,4 @@ export default {
     }
   }
 }
+
