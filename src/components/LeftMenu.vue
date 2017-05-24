@@ -1,5 +1,5 @@
 <template>
-  <Menu :active-name="activeName" width="auto" :open-names="openNames" @on-select="onSelect" accordion ref="menu">
+  <Menu :active-name="activeName" width="auto" :open-names="openNames" @on-select="onSelect" ref="menu">
     <Submenu v-for="menu in menus" :name="menu.name" :key="menu.name">
       <template slot="title">
         <Icon :type="menu.icon"></Icon>

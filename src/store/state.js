@@ -14,10 +14,14 @@ const leftMenus = {
     icon: 'navigate',
     children: [{
       name: 'logview',
-      text: '日志查看'
+      text: '日志查看',
+      icon: 'ios-box-outline',
+      color: '#0c9'
     }, {
       name: 'visits',
-      text: '访问统计'
+      text: '访问统计',
+      icon: 'ios-pulse',
+      color: '#39f'
     }]
   }],
   settings: [{

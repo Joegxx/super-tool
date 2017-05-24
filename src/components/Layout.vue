@@ -77,7 +77,7 @@ export default {
   height: @header-height;
 }
 .layout-content {
-  min-height: 200px;
+  min-height: 400px;
   margin: 15px;
   overflow: hidden;
   background: #fff;
