@@ -13,7 +13,7 @@ export default new Vuex.Store({
     curLeftMenus: state => state.leftMenus[state.activeTopMenu] || [],
     curChildMenus (state, getters) {
       const menus = []
-      getters.curLeftMenus.forEach((item) => {
+      getters.curLeftMenus.forEach(item => {
         menus.push(...item.children)
       })
       return menus

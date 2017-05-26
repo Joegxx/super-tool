@@ -1,0 +1,28 @@
+{
+  "rows": [
+    {
+      "time": "2017-04-06 16:17:25",
+      "level": 0,
+      "ip": "10.22.149.44",
+      "message": "服务启动成功:http://10.22.149.44:11200/SuperEnvMall.Server"
+    },
+    {
+      "time": "2017-04-06 16:17:20",
+      "level": 2,
+      "ip": "10.22.149.44",
+      "message": "[GetLinksByDeviceID]can not connect to mongodb"
+    },
+    {
+      "time": "2017-04-06 16:17:10",
+      "level": 1,
+      "ip": "10.22.149.44",
+      "message": "lcm agent is busy"
+    },
+    {
+      "time": "2017-04-06 16:17:00",
+      "level": 0,
+      "ip": "10.22.149.44",
+      "message": "release successful"
+    }
+  ]
+}
