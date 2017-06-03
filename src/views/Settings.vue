@@ -1,9 +1,10 @@
 <template>
-  <div>Settings</div>
+  <developing></developing>
 </template>
 
 <script>
 import { LayoutMixin } from '@/mixins'
+import Developing from '@/components/Developing'
 export default {
   mixins: [LayoutMixin],
   data () {
@@ -11,6 +12,7 @@ export default {
       activeLeftMenu: '',
       openLeftMenus: ['system']
     }
-  }
+  },
+  components: { Developing }
 }
 </script>

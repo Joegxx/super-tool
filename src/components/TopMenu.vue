@@ -1,7 +1,7 @@
 <template>
  <div class="layout-header">
     <Menu mode="horizontal" theme="light" :active-name="activeName" @on-select="onSelect">
-      <div class="layout-logo">
+      <div class="layout-logo" @click="onSelect('home')">
         <img src="../assets/logo.png">
         <span>SuperTool</span>
       </div>
@@ -44,6 +44,7 @@ export default {
   position: absolute;
   top: (@header-height - @logo-height)/2;
   left: 20px;
+  cursor: pointer;
   > img {
     display: inline-block;
     height: 100%;

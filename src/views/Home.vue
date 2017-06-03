@@ -33,6 +33,7 @@ export default {
   float: left;
   width: 300px;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 </style>

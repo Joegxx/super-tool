@@ -42,7 +42,7 @@ export default {
 .layout {
   border: 1px solid #d7dde4;
   background: #f5f7f9;
-  min-width: 800px;
+  min-width: 1280px;
 }
 .layout-content {
   min-height: 400px;

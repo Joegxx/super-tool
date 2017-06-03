@@ -1,3 +1,25 @@
 .tc {
   text-align: center;
 }
+
+/*Scrollbar style*/
+@scrollbar-width: 10px;
+@scrollbar-thumb-bgColor: #a6a6a6;
+
+::-webkit-scrollbar {
+    width: @scrollbar-width;
+    height: @scrollbar-width;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: @scrollbar-thumb-bgColor;
+
+    &:hover {
+        background-color: lighten(@scrollbar-thumb-bgColor,10%);
+    }
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: lighten(@scrollbar-thumb-bgColor,20%);
+}
+/*Scrollbar style*/
