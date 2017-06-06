@@ -22,7 +22,10 @@
       <li>
         <div>
           <span>时间</span>
-          <Date-picker v-model="currentTime" type="datetimerange" placeholder="选择日期和时间" class="log-time" :editable="false"></Date-picker>
+          <Radio-group v-model='currentDateType' type='button' class='search-date-type'>
+            <Radio v-for='item in DATETYPES' :label='item.value' :key='item'>{{ item.text }}</Radio>
+          </Radio-group>
+          <Date-picker v-model="currentTime" type="datetimerange" placeholder="选择日期和时间" class="search-date" :editable="false" @on-open-change='currentDateType=-1'></Date-picker>
         </div>
       </li>
     </ul>
@@ -52,6 +55,20 @@ const LEVEL = [
     icon: 'close-circled',
     color: '#f30',
     type: 'error'
+  }
+]
+const DATETYPES = [
+  {
+    text: '今天',
+    value: 0
+  },
+  {
+    text: '最近三天',
+    value: 1
+  },
+  {
+    text: '自定义',
+    value: -1
   }
 ]
 const types = ['SuperEnvMall.Server', 'SuperIT.Server']
@@ -127,6 +144,8 @@ export default {
       pageSize: 6,
       currentType: types[0],
       currentLevel: -1,
+      DATETYPES,
+      currentDateType: -1,
       currentTime: ['2017-04-06 16:00:00', '2017-04-06 17:00:00'],
       searchText: '',
       sortKey: 'time',
@@ -156,6 +175,22 @@ export default {
     },
     searchText () {
       this.getLogs()
+    },
+    currentDateType () {
+      let [start, end] = this.currentTime
+      const fmt = 'YYYY-MM-DD HH:mm:ss'
+      const now = this.$moment().endOf('day').format(fmt)
+      switch (this.currentDateType) {
+        case 0:
+          end = now
+          start = this.$moment().startOf('day').format(fmt)
+          break
+        case 1:
+          end = now
+          start = this.$moment().subtract(2, 'days').startOf('day').format(fmt)
+          break
+      }
+      this.currentTime = [start, end]
     }
   },
   methods: {
@@ -199,33 +234,14 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@base-padding: 15px;
 .pager {
-  padding: @base-padding 0;
-}
-.search-panel {
-  > li {
-    padding-bottom: @base-padding;
-    text-align: left;
-    overflow: hidden;
-    > div {
-      display: inline-block;
-      padding-right: @base-padding;
-      > span {
-        padding-right: 10px;
-      }
-      &.search-box {
-        padding-right: 0;
-      }
-    }
-  }
+  padding: 15px 0;
 }
 .log-type {
   width: 200px;
 }
-.log-time {
+.search-date {
   width: 300px;
-  display: inline-block;
 }
 .log-level {
   vertical-align: middle;
@@ -233,5 +249,6 @@ export default {
 .search-box {
   float: right;
   width: 300px;
+  padding-right: 0;
 }
 </style>

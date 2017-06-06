@@ -1,8 +1,33 @@
+/* variables */
+@base-padding: 15px;
+
+/* common styles */
 .tc {
   text-align: center;
 }
+.search-panel {
+  > li {
+    padding-bottom: @base-padding;
+    text-align: left;
+    overflow: hidden;
+    > div {
+      display: inline-block;
+      padding-right: @base-padding;
+      > span {
+        padding-right: 10px;
+      }
+    }
+    .search-date-type {
+      vertical-align: middle;
+      padding-right: 10px;
+    }
+    .search-date {
+      display: inline-block;
+    }
+  }
+}
 
-/*Scrollbar style*/
+/* Scrollbar style */
 @scrollbar-width: 10px;
 @scrollbar-thumb-bgColor: #a6a6a6;
 
@@ -22,4 +47,3 @@
 ::-webkit-scrollbar-track-piece {
     background-color: lighten(@scrollbar-thumb-bgColor,20%);
 }
-/*Scrollbar style*/

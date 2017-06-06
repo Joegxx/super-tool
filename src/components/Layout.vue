@@ -3,16 +3,16 @@
     <top-menu :menus="topMenus" :active-name="activeTopMenu"></top-menu>
     <div class="layout-content">
       <Row>
-        <i-col span="5">
+        <Col span="5">
           <left-menu :menus="curLeftMenus" :active-name="activeLeftMenu" :open-names="openLeftMenus"></left-menu>
-        </i-col>
-        <i-col span="19">
+        </Col>
+        <Col span="19">
           <div class="layout-content-main">
             <transition name="fade" mode="out-in">
               <router-view></router-view>
             </transition>
           </div>
-        </i-col>
+        </Col>
       </Row>
     </div>
     <div class="layout-footer">
