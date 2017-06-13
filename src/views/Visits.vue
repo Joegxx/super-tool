@@ -11,14 +11,15 @@
         </div>
       </li>
     </ul>
-    <charts id='project-chart' class='visit-chart' :options="projectChartOptions" ref="projectChart"></charts>
-    <charts id='module-chart' class='visit-chart' :options="moduleChartOptions" ref="moduleChart"></charts>
+    <charts id='project-chart' class='visit-chart' :options="projectChartOptions" :loading="projectLoading" ref="projectChart" @click="clickProject"></charts>
+    <charts v-if="showModuleChart" id='module-chart' class='visit-chart' :options="moduleChartOptions" :loading="moduleLoading" ref="moduleChart"></charts>
   </div>
 </template>
 
 <script>
 import Charts from '@/components/Charts'
-import { LayoutMixin } from '@/mixins'
+import { LayoutMixin, ChartMixin } from '@/mixins'
+import { GET_VISITS } from '@/store/types'
 const DATETYPES = [
   {
     text: '最近一周',
@@ -33,8 +34,18 @@ const DATETYPES = [
     value: -1
   }
 ]
+const barStyle = {
+  type: 'bar',
+  barMaxWidth: 40,
+  itemStyle: {
+    normal: {
+      barBorderRadius: [5, 5, 0, 0]
+    }
+  }
+}
+const projectNames = ['SuperIT', 'SuperEnvMall', 'SuperLAB']
 export default {
-  mixins: [LayoutMixin],
+  mixins: [LayoutMixin, ChartMixin],
   components: { Charts },
   data () {
     return {
@@ -43,31 +54,83 @@ export default {
       currentDateType: -1,
       currentDate: ['2017-06-01', '2017-06-03'],
       DATETYPES,
-      projectChartOptions: {
-        xAxis: {
-          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+      showModuleChart: false
+    }
+  },
+  computed: {
+    projectChartOptions () {
+      const series = []
+      const { xData, yData } = this.$store.state.Visit.projectData
+      for (let name of projectNames) {
+        series.push({
+          name: name,
+          ...barStyle,
+          data: yData[name]
+        })
+      }
+      const totalSerie = {
+        type: 'line',
+        name: '总人数',
+        data: []
+      }
+      for (let i in xData) {
+        let sum = 0
+        for (let oSerie of series) {
+          sum += oSerie.data[i]
+        }
+        totalSerie.data.push(sum)
+      }
+      series.push(totalSerie)
+      return {
+        legend: {
+          data: [...projectNames, totalSerie.name]
         },
-        yAxis: {},
-        series: [{
-          name: '销量',
-          type: 'bar',
-          data: [5, 20, 36, 10, 10, 20]
-        }]
-      },
-      moduleChartOptions: {
         xAxis: {
-          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+          data: xData
         },
-        yAxis: {},
+        yAxis: {
+          type: 'value',
+          name: '人数'
+        },
+        series
+      }
+    },
+    projectLoading () {
+      return this.$store.state.Visit.projectLoading
+    },
+    moduleChartOptions () {
+      const { xData, yData } = this.$store.state.Visit.moduleData
+      const moduleQuery = this.$store.state.Visit.moduleQuery
+      return {
+        title: {
+          text: `日期：${moduleQuery.date} 项目：${moduleQuery.project || '全部'}`,
+          textStyle: {
+            fontSize: 12
+          },
+          left: 'center'
+        },
+        xAxis: {
+          data: xData
+        },
+        yAxis: {
+          type: 'value',
+          name: '人数'
+        },
         series: [{
-          name: '销量',
-          type: 'bar',
-          data: [5, 20, 36, 10, 10, 20]
+          name: '人数',
+          ...barStyle,
+          data: yData
         }]
       }
+    },
+    moduleLoading () {
+      return this.$store.state.Visit.moduleLoading
     }
   },
   watch: {
+    currentDate () {
+      this.getProjectVistis()
+    },
     currentDateType () {
       let [start, end] = this.currentDate
       const fmt = 'YYYY-MM-DD'
@@ -85,19 +148,30 @@ export default {
       this.currentDate = [start, end]
     }
   },
-  mounted () {
-    const vm = this
-    let timeout
-    window.onresize = () => {
-      if (timeout) {
-        clearTimeout(timeout)
-      }
-      timeout = setTimeout(() => {
-        const charts = vm.$refs
-        Object.keys(charts).forEach(key => {
-          charts[key].resize()
-        })
-      }, 200)
+  created () {
+    this.getProjectVistis()
+  },
+  methods: {
+    getProjectVistis () {
+      this.showModuleChart = false
+      this.$store.dispatch(GET_VISITS, {
+        projectLoading: true,
+        projectQuery: {
+          names: projectNames,
+          date: this.currentDate
+        },
+        moduleQuery: {}
+      })
+    },
+    clickProject ({ seriesName, name }) {
+      this.showModuleChart = true
+      this.$store.dispatch(GET_VISITS, {
+        moduleLoading: true,
+        moduleQuery: {
+          project: seriesName === '总人数' ? null : seriesName,
+          date: name
+        }
+      })
     }
   }
 }
@@ -106,5 +180,6 @@ export default {
 <style lang='less' scoped>
 .visit-chart {
   height: 300px;
+  padding: 10px 0;
 }
 </style>

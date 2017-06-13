@@ -10,13 +10,13 @@ export default {
     sort: {}
   },
   mutations: {
-    [GET_LOGS] (state, result) {
-      Object.assign(state, result)
+    [GET_LOGS] (state, params) {
+      Object.assign(state, params)
     }
   },
   actions: {
-    [GET_LOGS] ({ commit, state }, result) {
-      commit(GET_LOGS, result)
+    [GET_LOGS] ({ commit, state }, params) {
+      commit(GET_LOGS, params)
       getLogs(state, result => {
         commit(GET_LOGS, result)
       })

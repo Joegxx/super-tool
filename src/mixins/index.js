@@ -18,3 +18,20 @@ export const LayoutMixin = {
   }
 }
 
+export const ChartMixin = {
+  mounted () {
+    const vm = this
+    let timeout
+    window.onresize = () => {
+      if (timeout) {
+        clearTimeout(timeout)
+      }
+      timeout = setTimeout(() => {
+        const charts = vm.$refs
+        Object.keys(charts).forEach(key => {
+          charts[key].resize()
+        })
+      }, 200)
+    }
+  }
+}
