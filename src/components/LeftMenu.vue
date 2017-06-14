@@ -16,12 +16,12 @@
 export default {
   props: ['menus', 'activeName', 'openNames'],
   watch: {
-    openNames (val) {
+    openNames () {
       this.$nextTick(() => {
         this.$refs.menu.updateOpened()
       })
     },
-    activeName (val) {
+    activeName () {
       this.$nextTick(() => {
         this.$refs.menu.updateActiveName()
       })
