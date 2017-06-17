@@ -1,8 +1,12 @@
 import axios from 'axios'
 import moment from 'moment'
 
+const DATAPATH = '/static/data/'
+const LOGDATA = DATAPATH + 'logs.json'
+const VISITDATA = DATAPATH + 'visits.json'
+
 export function getLogs ({ page, query, sort }, success) {
-  return axios.get('/static/data/logs.json').then(response => {
+  return axios.get(LOGDATA).then(response => {
     let totalRows = response.data[query.type] || []
     const { key, order } = sort
     if (key === 'time') {
@@ -39,7 +43,7 @@ export function getLogs ({ page, query, sort }, success) {
 }
 
 const getProjectVistis = ({ names, date }, success) => {
-  return axios.get('/static/data/visits.json').then(response => {
+  return axios.get(VISITDATA).then(response => {
     const totalData = response.data.data
     const projectData = { xData: [], yData: {} }
     const { xData, yData } = projectData
@@ -69,7 +73,7 @@ const getProjectVistis = ({ names, date }, success) => {
 }
 
 const getModuleVistis = ({ project, date }, success) => {
-  return axios.get('/static/data/visits.json').then(response => {
+  return axios.get(VISITDATA).then(response => {
     const totalData = response.data.data
     let data = []
     const moduleData = { xData: [], yData: [] }
