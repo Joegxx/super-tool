@@ -2,6 +2,16 @@
 
 > A maintenance tool
 
+## 预览
+<p align="center">
+  <a href="https://igonglei.github.io/super-tool/" target="_blank">
+    <img src="https://raw.githubusercontent.com/igonglei/super-tool/gh-pages/preview/logview.png" width="700px">
+    <img src="https://raw.githubusercontent.com/igonglei/super-tool/gh-pages/preview/visits.png" width="700px">
+    <br>
+    在线预览
+  </a>
+</p>
+
 ## Build Setup
 
 ``` bash
@@ -18,4 +28,3 @@ npm run build
 npm run build --report
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
