@@ -3,12 +3,14 @@
 > A maintenance tool
 
 ## 预览
-<p align="center">
+
+### [在线预览](https://igonglei.github.io/super-tool/)
+
+### 预览图
+<p>
   <a href="https://igonglei.github.io/super-tool/" target="_blank">
-    <img src="https://raw.githubusercontent.com/igonglei/super-tool/gh-pages/preview/logview.png" width="700px">
-    <img src="https://raw.githubusercontent.com/igonglei/super-tool/gh-pages/preview/visits.png" width="700px">
-    <br>
-    在线预览
+    <img src="https://raw.githubusercontent.com/igonglei/super-tool/gh-pages/preview/logview.png">
+    <img src="https://raw.githubusercontent.com/igonglei/super-tool/gh-pages/preview/visits.png">
   </a>
 </p>
 
