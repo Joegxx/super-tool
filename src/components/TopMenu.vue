@@ -35,8 +35,9 @@ export default {
 @logo-height: 50px;
 .layout-header {
   box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 1px;
+  height: @header-height;
   > .ivu-menu-horizontal {
-    height: @header-height;
+    height: 100%;
     line-height: @header-height;
     .ivu-menu-item {
       > i {

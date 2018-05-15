@@ -10,24 +10,17 @@ export const LayoutMixin = {
   },
   created () {
     this.setMenu()
+    this.setContentHeight()
   },
-  methods: {
-    setMenu () {
-      this.$store.commit(SET_MENU, this.$data)
-    }
-  }
-}
-
-export const ChartMixin = {
   mounted () {
-    const vm = this
     let timeout
     window.onresize = () => {
       if (timeout) {
         clearTimeout(timeout)
       }
       timeout = setTimeout(() => {
-        const charts = vm.$refs
+        this.setContentHeight()
+        const charts = this.$refs
         Object.keys(charts).forEach(key => {
           let chart = charts[key]
           if (chart) {
@@ -35,6 +28,16 @@ export const ChartMixin = {
           }
         })
       }, 100)
+    }
+  },
+  methods: {
+    setMenu () {
+      this.$store.commit(SET_MENU, this.$data)
+    },
+    setContentHeight () {
+      const dgec = className => document.getElementsByClassName(className)
+      const contentHeight = document.documentElement.clientHeight - dgec('layout-header')[0].clientHeight - dgec('layout-footer')[0].clientHeight
+      dgec('layout-content')[0].style.minHeight = `${contentHeight - 32}px`
     }
   }
 }

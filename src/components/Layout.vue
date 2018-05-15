@@ -45,7 +45,7 @@ export default {
   min-width: 1260px;
 }
 .layout-content {
-  min-height: 640px;
+  min-height: 400px;
   margin: 15px;
   overflow: hidden;
   background: #fff;
@@ -58,5 +58,6 @@ export default {
   text-align: center;
   padding-bottom: 15px;
   color: #9ea7b4;
+  height: 33px;
 }
 </style>

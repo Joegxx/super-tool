@@ -18,7 +18,7 @@
 
 <script>
 import Charts from '@/components/Charts'
-import { LayoutMixin, ChartMixin } from '@/mixins'
+import { LayoutMixin } from '@/mixins'
 import { GET_VISITS } from '@/store/types'
 const DATETYPES = [
   {
@@ -45,7 +45,7 @@ const barStyle = {
 }
 const projectNames = ['SuperIT', 'SuperEnvMall', 'SuperLAB']
 export default {
-  mixins: [LayoutMixin, ChartMixin],
+  mixins: [LayoutMixin],
   components: { Charts },
   data () {
     return {
