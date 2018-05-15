@@ -28,12 +28,12 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style scoped>
 .cards > li {
   float: left;
   width: 300px;
   margin-right: 15px;
   cursor: pointer;
+  list-style: none;
 }
-
 </style>

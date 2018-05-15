@@ -38,14 +38,14 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style>
 .layout {
   border: 1px solid #d7dde4;
   background: #f5f7f9;
-  min-width: 1280px;
+  min-width: 1260px;
 }
 .layout-content {
-  min-height: 400px;
+  min-height: 640px;
   margin: 15px;
   overflow: hidden;
   background: #fff;
@@ -56,7 +56,7 @@ export default {
 }
 .layout-footer {
   text-align: center;
-  padding: 10px 0 20px;
+  padding-bottom: 15px;
   color: #9ea7b4;
 }
 </style>

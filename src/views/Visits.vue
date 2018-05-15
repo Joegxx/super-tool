@@ -4,10 +4,10 @@
       <li>
         <div>
           <span>时间</span>
-          <Radio-group v-model='currentDateType' type='button' class='search-date-type'>
-            <Radio v-for='item in DATETYPES' :label='item.value' :key='item'>{{ item.text }}</Radio>
-          </Radio-group>
-          <Date-picker v-model='currentDate' type='daterange' placeholder='选择日期' class='search-date' :editable='false' @on-open-change='currentDateType=-1'></Date-picker>
+          <RadioGroup v-model='currentDateType' type='button' class='search-date-type'>
+            <Radio v-for='item in DATETYPES' :label='item.value' :key='item.value'>{{ item.text }}</Radio>
+          </RadioGroup>
+          <DatePicker v-model='currentDate' type='daterange' placeholder='选择日期' class='search-date' :editable='false' @on-open-change='currentDateType=-1'></DatePicker>
         </div>
       </li>
     </ul>
@@ -177,9 +177,9 @@ export default {
 }
 </script>
 
-<style lang='less' scoped>
+<style scoped>
 .visit-chart {
-  height: 300px;
+  height: 400px;
   padding: 10px 0;
 }
 </style>

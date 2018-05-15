@@ -10,10 +10,10 @@
         </div>
         <div>
           <span>级别</span>
-          <Radio-group v-model="currentLevel" type="button" class="log-level">
+          <RadioGroup v-model="currentLevel" type="button" class="log-level">
             <Radio :label="-1">全部</Radio>
-            <Radio v-for="(item,index) in levels" :label="index" :key="item">{{ item.text }}</Radio>
-          </Radio-group>
+            <Radio v-for="(item,index) in levels" :label="index" :key="index">{{ item.text }}</Radio>
+          </RadioGroup>
         </div>
         <div class="search-box">
           <Input v-model="searchText" icon="ios-search" placeholder="请输入日志信息..."></Input>
@@ -22,10 +22,10 @@
       <li>
         <div>
           <span>时间</span>
-          <Radio-group v-model='currentDateType' type='button' class='search-date-type'>
-            <Radio v-for='item in DATETYPES' :label='item.value' :key='item'>{{ item.text }}</Radio>
-          </Radio-group>
-          <Date-picker v-model="currentTime" type="datetimerange" placeholder="选择日期和时间" class="search-date" :editable="false" @on-open-change='currentDateType=-1'></Date-picker>
+          <RadioGroup v-model='currentDateType' type='button' class='search-date-type'>
+            <Radio v-for='item in DATETYPES' :label='item.value' :key='item.value'>{{ item.text }}</Radio>
+          </RadioGroup>
+          <DatePicker v-model="currentTime" type="datetimerange" placeholder="选择日期和时间" class="search-date" :editable="false" @on-open-change='currentDateType=-1'></DatePicker>
         </div>
       </li>
     </ul>
@@ -233,7 +233,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style scoped>
 .pager {
   padding: 15px 0;
 }

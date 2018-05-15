@@ -7,7 +7,8 @@
       </div>
       <div class="layout-nav">
         <Menu-item v-for="item in menus" :name="item.name" :key="item.name">
-          <Icon :type="item.icon"></Icon>{{ item.text }}
+          <Icon :type="item.icon"></Icon>
+          <span>{{ item.text }}</span>
         </Menu-item>
       </div>
       <div class="layout-user">
@@ -37,6 +38,14 @@ export default {
   > .ivu-menu-horizontal {
     height: @header-height;
     line-height: @header-height;
+    .ivu-menu-item {
+      > i {
+        font-size: 20px;
+      }
+      > i, > span {
+        vertical-align: middle;
+      }
+    }
   }
 }
 .layout-logo {

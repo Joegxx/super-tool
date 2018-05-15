@@ -3,7 +3,7 @@
     <Submenu v-for="menu in menus" :name="menu.name" :key="menu.name">
       <template slot="title">
         <Icon :type="menu.icon"></Icon>
-        {{ menu.text }}
+        <span>{{ menu.text }}</span>
       </template>
       <Menu-item v-for="item in menu.children" :name="item.name" :key="item.name">
         {{ item.text }}
@@ -34,3 +34,14 @@ export default {
   }
 }
 </script>
+
+<style lang="less">
+  .ivu-menu-submenu-title {
+    > i {
+      font-size: 16px;
+    }
+    > i, > span {
+      vertical-align: middle;
+    }
+  }
+</style>

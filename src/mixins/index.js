@@ -29,9 +29,12 @@ export const ChartMixin = {
       timeout = setTimeout(() => {
         const charts = vm.$refs
         Object.keys(charts).forEach(key => {
-          charts[key].resize()
+          let chart = charts[key]
+          if (chart) {
+            chart.resize()
+          }
         })
-      }, 200)
+      }, 100)
     }
   }
 }
