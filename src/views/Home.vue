@@ -32,7 +32,7 @@ export default {
 .cards > li {
   float: left;
   width: 300px;
-  margin-right: 15px;
+  margin-right: 30px;
   cursor: pointer;
   list-style: none;
 }

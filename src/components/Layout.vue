@@ -3,10 +3,10 @@
     <top-menu :menus="topMenus" :active-name="activeTopMenu"></top-menu>
     <div class="layout-content">
       <Row>
-        <Col span="5">
-          <left-menu :menus="curLeftMenus" :active-name="activeLeftMenu" :open-names="openLeftMenus"></left-menu>
+        <Col span="4">
+          <left-menu :menus="curLeftMenus" :active-name="activeLeftMenu" :open-names="openLeftMenus" class="left-menu"></left-menu>
         </Col>
-        <Col span="19">
+        <Col span="20">
           <div class="layout-content-main">
             <transition name="fade" mode="out-in">
               <router-view></router-view>
@@ -18,6 +18,7 @@
     <div class="layout-footer">
       2017 &copy; Gonglei
     </div>
+    <BackTop :height="50" :duration="700"></BackTop>
   </div>
 </template>
 
@@ -40,24 +41,25 @@ export default {
 
 <style>
 .layout {
-  border: 1px solid #d7dde4;
-  background: #f5f7f9;
+  background: #eee;
   min-width: 1260px;
+  padding:  1px;
 }
 .layout-content {
   min-height: 400px;
-  margin: 15px;
+  margin: 95px auto 15px;
   overflow: hidden;
   background: #fff;
   border-radius: 4px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
 .layout-content-main {
-  padding: 10px;
+  padding: 30px;
 }
 .layout-footer {
   text-align: center;
-  padding-bottom: 15px;
-  color: #9ea7b4;
-  height: 33px;
+  padding: 15px 0;
+  color: #666;
+  background: #fff;
 }
 </style>

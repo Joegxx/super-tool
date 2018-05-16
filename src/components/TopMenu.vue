@@ -6,10 +6,10 @@
         <span>SuperTool</span>
       </div>
       <div class="layout-nav">
-        <Menu-item v-for="item in menus" :name="item.name" :key="item.name">
+        <MenuItem v-for="item in menus" :name="item.name" :key="item.name">
           <Icon :type="item.icon"></Icon>
           <span>{{ item.text }}</span>
-        </Menu-item>
+        </MenuItem>
       </div>
       <div class="layout-user">
         <img src="../assets/user.png">
@@ -36,6 +36,12 @@ export default {
 .layout-header {
   box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 1px;
   height: @header-height;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #fff;
   > .ivu-menu-horizontal {
     height: 100%;
     line-height: @header-height;
@@ -53,7 +59,7 @@ export default {
   height: @logo-height;
   position: absolute;
   top: (@header-height - @logo-height)/2;
-  left: 20px;
+  left: 50px;
   cursor: pointer;
   > img {
     display: inline-block;
@@ -61,10 +67,10 @@ export default {
   }
   > span:extend(.layout-logo > img) {
     font-size: 20px;
-    color: #39f;
+    color: #2b3641;
     vertical-align: top;
     line-height: @logo-height;
-    margin-left: 5px;
+    margin-left: 15px;
   }
 }
 .layout-nav {
@@ -74,13 +80,14 @@ export default {
 }
 .layout-user:extend(.layout-logo all) {
   left: auto;
-  right: 20px;
+  right: 50px;
+  cursor: default;
   > img {
     border-radius: 100%;
     box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
   }
   > span {
-    color: #657180;
+    color: #495060;
     font-size: 14px;
   }
 }

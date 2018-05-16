@@ -141,7 +141,7 @@ export default {
       levels: LEVEL,
       types,
       currentPage: 1,
-      pageSize: 6,
+      pageSize: 10,
       currentType: types[0],
       currentLevel: -1,
       DATETYPES,
@@ -235,10 +235,11 @@ export default {
 
 <style scoped>
 .pager {
-  padding: 15px 0;
+  padding: 20px 0;
+  text-align: center;
 }
 .log-type {
-  width: 200px;
+  width: 212px;
 }
 .search-date {
   width: 300px;

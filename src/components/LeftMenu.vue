@@ -5,9 +5,9 @@
         <Icon :type="menu.icon"></Icon>
         <span>{{ menu.text }}</span>
       </template>
-      <Menu-item v-for="item in menu.children" :name="item.name" :key="item.name">
+      <MenuItem v-for="item in menu.children" :name="item.name" :key="item.name">
         {{ item.text }}
-      </Menu-item>
+      </MenuItem>
     </Submenu>
   </Menu>
 </template>
@@ -43,5 +43,8 @@ export default {
     > i, > span {
       vertical-align: middle;
     }
+  }
+  .left-menu.ivu-menu {
+    padding: 10px 0;
   }
 </style>

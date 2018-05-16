@@ -20,11 +20,11 @@
 - Vue-router
 - Vuex
 - Vue-cli
+- iView
 - Webpack
 - ES6
 - Less
 - Axios
-- iView
 
 ## 项目结构
 ```
@@ -99,4 +99,3 @@ npm run dev
 # build for production with minification
 npm run build
 ```
-

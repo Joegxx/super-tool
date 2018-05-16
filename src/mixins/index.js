@@ -37,7 +37,9 @@ export const LayoutMixin = {
     setContentHeight () {
       const dgec = className => document.getElementsByClassName(className)
       const contentHeight = document.documentElement.clientHeight - dgec('layout-header')[0].clientHeight - dgec('layout-footer')[0].clientHeight
-      dgec('layout-content')[0].style.minHeight = `${contentHeight - 32}px`
+      const minHeight = `${contentHeight - 32}px`
+      dgec('layout-content')[0].style.minHeight = minHeight
+      dgec('left-menu')[0].style.minHeight = minHeight
     }
   }
 }

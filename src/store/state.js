@@ -3,9 +3,9 @@ const topMenus = [{
   text: '首页',
   icon: 'home'
 }, {
-  name: 'settings',
-  text: '设置',
-  icon: 'settings'
+  name: 'about',
+  text: '关于',
+  icon: 'information-circled'
 }]
 const leftMenus = {
   home: [{
@@ -15,7 +15,7 @@ const leftMenus = {
     children: [{
       name: 'logview',
       text: '日志查看',
-      icon: 'ios-box-outline',
+      icon: 'ios-paper-outline',
       color: '#0c9'
     }, {
       name: 'visits',
@@ -24,16 +24,13 @@ const leftMenus = {
       color: '#39f'
     }]
   }],
-  settings: [{
-    name: 'system',
-    text: '系统管理',
-    icon: 'gear-a',
+  about: [{
+    name: 'about',
+    text: '关于',
+    icon: 'information-circled',
     children: [{
-      name: 'logview',
-      text: '用户管理'
-    }, {
-      name: 'visits',
-      text: '权限管理'
+      name: 'about',
+      text: '项目介绍'
     }]
   }]
 }
