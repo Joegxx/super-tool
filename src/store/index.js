@@ -17,7 +17,8 @@ export default new Vuex.Store({
         menus.push(...item.children)
       })
       return menus
-    }
+    },
+    curPageTitle: state => state.pageTitles[state.curPageName]
   },
   mutations: {
     [SET_MENU] (state, menu) {

@@ -10,8 +10,8 @@ const topMenus = [{
 const leftMenus = {
   home: [{
     name: 'operations',
-    text: '运维统计',
-    icon: 'navigate',
+    text: '运维工具',
+    icon: 'wrench',
     children: [{
       name: 'logview',
       text: '日志查看',
@@ -34,10 +34,18 @@ const leftMenus = {
     }]
   }]
 }
+const pageTitles = {
+  home: '首页',
+  about: '关于',
+  logview: '日志查看',
+  visits: '访问统计'
+}
 export default {
   activeTopMenu: '',
   activeLeftMenu: '',
   openLeftMenus: [],
   topMenus,
-  leftMenus
+  leftMenus,
+  pageTitles,
+  curPageName: ''
 }

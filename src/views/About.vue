@@ -1,13 +1,17 @@
 <template>
   <div class="about">
-     <h1>关于SuperTool</h1>
-     <p>SuperTool是基于Vue.js开发的系统，主要功能是监控其他系统的运行情况。</p>
-     <h2>技术栈</h2>
-     <ul>
-        <li v-for="item in skills">
-          {{ item }}
-        </li>
-     </ul>
+    <h1>关于SuperTool</h1>
+    <p>SuperTool是基于Vue.js开发的系统，主要功能是监控其他系统的运行情况。</p>
+    <h2>技术栈</h2>
+    <ul class="skills">
+      <li v-for="item in skills">
+        {{ item }}
+      </li>
+    </ul>
+    <h2>源代码</h2>
+    <p><Icon type="social-github"></Icon><a href="https://github.com/igonglei/super-tool" target="_blank">SuperTool</a></p>
+    <h2>其他作品</h2>
+    <p><img  src="../assets/cui.png"><a href="https://igonglei.github.io/clean-ui" target="_blank">CleanUI</a></p>
   </div>
 </template>
 
@@ -19,7 +23,7 @@ export default {
     return {
       activeLeftMenu: 'about',
       openLeftMenus: ['about'],
-      skills: ['Vue.js', 'Vue-router']
+      skills: ['Vue.js', 'Vue-router', 'Vuex', 'Vue-cli', 'iView', 'Webpack', 'ES6', 'Less', 'Axios']
     }
   }
 }
@@ -33,7 +37,31 @@ export default {
     }
     p {
       font-size: 14px;
-      padding: 10px 0;
+      padding: 10px;
+      >i {
+        font-size: 20px;
+        vertical-align: middle;
+      }
+      >a {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 5px;
+        line-height: 20px;
+      }
+      >img {
+        width: 20px;
+        vertical-align: middle;
+      }
     }
-  }
+    h2 {
+      margin-top: 10px;
+    }
+    .skills {
+      padding: 10px 30px;
+      font-size: 14px;
+      >li {
+        margin-bottom: 5px;
+      }
+    }
+}
 </style>

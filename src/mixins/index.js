@@ -5,12 +5,14 @@ export const LayoutMixin = {
     return {
       activeTopMenu: this.$route.name,
       activeLeftMenu: this.$route.name,
-      openLeftMenus: []
+      openLeftMenus: [],
+      curPageName: this.$route.name
     }
   },
   created () {
     this.setMenu()
     this.setContentHeight()
+    document.title = `${this.$store.getters.curPageTitle} - SuperTool`
   },
   mounted () {
     let timeout
