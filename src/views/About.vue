@@ -49,8 +49,9 @@ export default {
         line-height: 20px;
       }
       >img {
-        width: 20px;
+        height: 20px;
         vertical-align: middle;
+        padding: 2px 1px;
       }
     }
     h2 {

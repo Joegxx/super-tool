@@ -1,4 +1,4 @@
-import { SET_MENU } from '@/store/types'
+import { SET_COMMON } from '@/store/types'
 
 export const LayoutMixin = {
   data () {
@@ -10,9 +10,8 @@ export const LayoutMixin = {
     }
   },
   created () {
-    this.setMenu()
+    this.setCommon()
     this.setContentHeight()
-    document.title = `${this.$store.getters.curPageTitle} - SuperTool`
   },
   mounted () {
     let timeout
@@ -33,12 +32,13 @@ export const LayoutMixin = {
     }
   },
   methods: {
-    setMenu () {
-      this.$store.commit(SET_MENU, this.$data)
+    setCommon () {
+      this.$store.commit(SET_COMMON, this.$data)
+      document.title = `${this.$store.getters.curPageTitle} - SuperTool`
     },
-    setContentHeight () {
+    setContentHeight (heightName = 'clientHeight') {
       const dgec = className => document.getElementsByClassName(className)
-      const contentHeight = document.documentElement.clientHeight - dgec('layout-header')[0].clientHeight - dgec('layout-footer')[0].clientHeight
+      const contentHeight = document.documentElement[heightName] - dgec('layout-header')[0].clientHeight - dgec('layout-footer')[0].clientHeight
       const minHeight = `${contentHeight - 32}px`
       dgec('layout-content')[0].style.minHeight = minHeight
       dgec('left-menu')[0].style.minHeight = minHeight

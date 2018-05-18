@@ -148,9 +148,6 @@ export default {
       this.currentDate = [start, end]
     }
   },
-  created () {
-    this.getProjectVistis()
-  },
   methods: {
     getProjectVistis () {
       this.showModuleChart = false
@@ -161,6 +158,8 @@ export default {
           date: this.currentDate
         },
         moduleQuery: {}
+      }).then(() => {
+        this.setContentHeight()
       })
     },
     clickProject ({ seriesName, name }) {
@@ -171,6 +170,8 @@ export default {
           project: seriesName === '总人数' ? null : seriesName,
           date: name
         }
+      }).then(() => {
+        this.setContentHeight('scrollHeight')
       })
     }
   }

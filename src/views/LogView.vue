@@ -160,9 +160,6 @@ export default {
       return this.$store.state.Log.total
     }
   },
-  created () {
-    this.getLogs()
-  },
   watch: {
     currentType () {
       this.getLogs()

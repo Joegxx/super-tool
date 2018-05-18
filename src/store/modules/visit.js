@@ -24,7 +24,7 @@ export default {
   actions: {
     [GET_VISITS] ({ commit, state }, params) {
       commit(GET_VISITS, params)
-      getVistis(state, result => {
+      return getVistis(state, result => {
         commit(GET_VISITS, result)
       })
     }

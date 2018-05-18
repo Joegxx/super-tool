@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import state from './state'
-import { SET_MENU } from './types'
+import { SET_COMMON } from './types'
 import Log from './modules/log'
 import Visit from './modules/visit'
 
@@ -21,8 +21,8 @@ export default new Vuex.Store({
     curPageTitle: state => state.pageTitles[state.curPageName]
   },
   mutations: {
-    [SET_MENU] (state, menu) {
-      Object.assign(state, menu)
+    [SET_COMMON] (state, common) {
+      Object.assign(state, common)
     }
   },
   modules: {

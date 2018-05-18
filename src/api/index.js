@@ -69,6 +69,7 @@ const getProjectVistis = ({ names, date }, success) => {
       }
     }
     success({ projectData, projectLoading: false })
+    return projectData
   })
 }
 
@@ -89,13 +90,14 @@ const getModuleVistis = ({ project, date }, success) => {
       }
     }
     success({ moduleData, moduleLoading: false })
+    return moduleData
   })
 }
 
 export function getVistis ({ projectQuery, moduleQuery }, success) {
   if (Object.keys(moduleQuery).length > 0) {
-    getModuleVistis(moduleQuery, success)
+    return getModuleVistis(moduleQuery, success)
   } else {
-    getProjectVistis(projectQuery, success)
+    return getProjectVistis(projectQuery, success)
   }
 }
