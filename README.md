@@ -8,8 +8,10 @@
 
 ### 预览图
 <p>
-  <a href="https://igonglei.github.io/super-tool/" target="_blank">
+  <a href="https://igonglei.github.io/super-tool/logview" target="_blank">
     <img src="https://raw.githubusercontent.com/igonglei/super-tool/master/screenshots/logs.png">
+  </a>
+  <a href="https://igonglei.github.io/super-tool/visits" target="_blank">
     <img src="https://raw.githubusercontent.com/igonglei/super-tool/master/screenshots/visits.png">
   </a>
 </p>
