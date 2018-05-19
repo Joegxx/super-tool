@@ -8,10 +8,8 @@
 
 ### 预览图
 <p>
-  <a href="https://igonglei.github.io/super-tool/logview" target="_blank">
+  <a href="https://igonglei.github.io/super-tool/" target="_blank">
     <img src="https://raw.githubusercontent.com/igonglei/super-tool/master/screenshots/logs.png">
-  </a>
-  <a href="https://igonglei.github.io/super-tool/visits" target="_blank">
     <img src="https://raw.githubusercontent.com/igonglei/super-tool/master/screenshots/visits.png">
   </a>
 </p>
@@ -50,7 +48,8 @@
 │   │   └── index.js
 │   ├── assets
 │   │   ├── logo.png
-│   │   └── user.png
+│   │   ├── user.png
+│   │   └── cui.png
 │   ├── components
 │   │   ├── Charts.vue
 │   │   ├── Developing.vue
@@ -75,8 +74,8 @@
 │   └── views
 │       ├── Home.vue
 │       ├── LogView.vue
-│       ├── Settings.vue
-│       └── Visits.vue
+│       ├── Visits.vue
+│       └── About.vue
 │   ├── App.vue
 │   └── main.js
 ├── static
