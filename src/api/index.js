@@ -1,7 +1,7 @@
 import axios from 'axios'
 import moment from 'moment'
 
-const DATAPATH = '/static/data/'
+const DATAPATH = 'static/data/'
 const LOGDATA = DATAPATH + 'logs.json'
 const VISITDATA = DATAPATH + 'visits.json'
 

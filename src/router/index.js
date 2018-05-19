@@ -10,6 +10,7 @@ const About = () => import('@/views/About')
 
 export default new Router({
   mode: 'history',
+  base: '/',
   scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
