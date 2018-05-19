@@ -9,8 +9,8 @@
 ### 预览图
 <p>
   <a href="https://igonglei.github.io/super-tool/" target="_blank">
-    <img src="https://raw.githubusercontent.com/igonglei/super-tool/gh-pages/preview/logview.png">
-    <img src="https://raw.githubusercontent.com/igonglei/super-tool/gh-pages/preview/visits.png">
+    <img src="https://raw.githubusercontent.com/igonglei/super-tool/master/screenshots/logs.png">
+    <img src="https://raw.githubusercontent.com/igonglei/super-tool/master/screenshots/visits.png">
   </a>
 </p>
 
