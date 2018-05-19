@@ -11,9 +11,9 @@ export const LayoutMixin = {
   },
   created () {
     this.setCommon()
-    this.setContentHeight()
   },
   mounted () {
+    this.setContentHeight()
     let timeout
     window.onresize = () => {
       if (timeout) {
@@ -36,10 +36,11 @@ export const LayoutMixin = {
       this.$store.commit(SET_COMMON, this.$data)
       document.title = `${this.$store.getters.curPageTitle} - SuperTool`
     },
-    setContentHeight (heightName = 'clientHeight') {
+    setContentHeight () {
       const dgec = className => document.getElementsByClassName(className)
-      const contentHeight = document.documentElement[heightName] - dgec('layout-header')[0].clientHeight - dgec('layout-footer')[0].clientHeight
-      const minHeight = `${contentHeight - 32}px`
+      const contentHeight = document.documentElement.clientHeight - dgec('layout-header')[0].clientHeight - dgec('layout-footer')[0].clientHeight - 32
+      const contentMainHeight = dgec('layout-content-main')[0].clientHeight
+      const minHeight = `${Math.max(contentHeight, contentMainHeight)}px`
       dgec('layout-content')[0].style.minHeight = minHeight
       dgec('left-menu')[0].style.minHeight = minHeight
     }

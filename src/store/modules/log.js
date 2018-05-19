@@ -17,7 +17,7 @@ export default {
   actions: {
     [GET_LOGS] ({ commit, state }, params) {
       commit(GET_LOGS, params)
-      getLogs(state, result => {
+      return getLogs(state, result => {
         commit(GET_LOGS, result)
       })
     }

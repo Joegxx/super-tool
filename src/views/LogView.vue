@@ -160,6 +160,9 @@ export default {
       return this.$store.state.Log.total
     }
   },
+  created () {
+    this.getLogs()
+  },
   watch: {
     currentType () {
       this.getLogs()
@@ -207,6 +210,8 @@ export default {
           key: this.sortKey,
           order: this.order
         }
+      }).then(() => {
+        this.setContentHeight()
       })
     },
     show (index) {

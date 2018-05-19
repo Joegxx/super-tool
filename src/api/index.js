@@ -38,7 +38,9 @@ export function getLogs ({ page, query, sort }, success) {
     const total = totalRows.length
     const { current, size } = page
     const rows = totalRows.slice((current - 1) * size, current * size)
-    success({ total, rows })
+    const result = { total, rows }
+    success(result)
+    return result
   })
 }
 

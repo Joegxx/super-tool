@@ -127,6 +127,9 @@ export default {
       return this.$store.state.Visit.moduleLoading
     }
   },
+  created () {
+    this.getProjectVistis()
+  },
   watch: {
     currentDate () {
       this.getProjectVistis()
@@ -171,7 +174,7 @@ export default {
           date: name
         }
       }).then(() => {
-        this.setContentHeight('scrollHeight')
+        this.setContentHeight()
       })
     }
   }
