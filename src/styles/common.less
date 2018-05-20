@@ -1,28 +1,15 @@
-/* variables */
-@base-padding: 15px;
-
 /* common styles */
-.tc {
-  text-align: center;
-}
-.search-panel {
-  > li {
-    padding-bottom: @base-padding + 5;
-    text-align: left;
-    overflow: hidden;
-    > div {
-      display: inline-block;
-      padding-right: @base-padding;
-      > span {
-        padding-right: 10px;
-      }
+@media (max-width: 768px) {
+  @header-height: 80px;
+  .layout {
+    .layout-header {
+      height: @header-height*2;
     }
-    .search-date-type {
-      vertical-align: middle;
-      padding-right: 10px;
+    .layout-nav {
+      padding-top: @header-height;
     }
-    .search-date {
-      display: inline-block;
+    .layout-content {
+      margin-top: 95px + @header-height;
     }
   }
 }
@@ -30,20 +17,16 @@
 /* Scrollbar style */
 @scrollbar-width: 8px;
 @scrollbar-thumb-bgColor: #727687;
-
 ::-webkit-scrollbar {
     width: @scrollbar-width;
     height: @scrollbar-width;
 }
-
 ::-webkit-scrollbar-thumb {
     background-color: @scrollbar-thumb-bgColor;
-
     &:hover {
         background-color: lighten(@scrollbar-thumb-bgColor,10%);
     }
 }
-
 ::-webkit-scrollbar-track-piece {
     background-color: lighten(@scrollbar-thumb-bgColor,20%);
 }

@@ -1,0 +1,22 @@
+@base-padding: 15px;
+.search-panel {
+  > li {
+    padding-bottom: @base-padding + 5;
+    text-align: left;
+    overflow: hidden;
+    > div {
+      display: inline-block;
+      padding-right: @base-padding;
+      > span {
+        padding-right: 10px;
+      }
+    }
+    .search-date-type {
+      vertical-align: middle;
+      padding-right: 10px;
+    }
+    .search-date {
+      display: inline-block;
+    }
+  }
+}

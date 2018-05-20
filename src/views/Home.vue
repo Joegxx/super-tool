@@ -33,7 +33,16 @@ export default {
   float: left;
   width: 300px;
   margin-right: 30px;
+  margin-bottom: 30px;
   cursor: pointer;
   list-style: none;
+}
+.tc {
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .cards > li {
+    width: 100%;
+  }
 }
 </style>

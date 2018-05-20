@@ -235,7 +235,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+@import '../styles/searchPanel.less';
 .pager {
   padding: 20px 0;
   text-align: center;

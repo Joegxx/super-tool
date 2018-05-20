@@ -91,15 +91,4 @@ export default {
     font-size: 14px;
   }
 }
-@media (max-width: 768px) {
-  .layout-header {
-    height: @header-height*2;
-  }
-  .layout-nav {
-    padding-top: @header-height;
-  }
-  .layout-content {
-    margin-top: 95px + @header-height;
-  }
-}
 </style>

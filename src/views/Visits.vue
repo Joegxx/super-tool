@@ -181,7 +181,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+@import '../styles/searchPanel.less';
 .visit-chart {
   height: 400px;
   padding: 10px 0;

@@ -3,10 +3,10 @@
     <top-menu :menus="topMenus" :active-name="activeTopMenu"></top-menu>
     <div class="layout-content">
       <Row>
-        <Col span="4">
+        <Col :sm="4" :xs="0">
           <left-menu :menus="curLeftMenus" :active-name="activeLeftMenu" :open-names="openLeftMenus" class="left-menu"></left-menu>
         </Col>
-        <Col span="20">
+        <Col :sm="20" :xs="24">
           <div class="layout-content-main">
             <transition name="fade" mode="out-in">
               <router-view></router-view>
@@ -42,7 +42,6 @@ export default {
 <style>
 .layout {
   background: #eee;
-  min-width: 1260px;
   padding:  1px;
 }
 .layout-content {
