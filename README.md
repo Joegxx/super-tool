@@ -43,13 +43,16 @@
 │   ├── dev.env.js
 │   ├── index.js
 │   └── prod.env.js
+├── screenshots
+│   ├── logs.png
+│   └── visits.png
 ├── src
 │   ├── api
 │   │   └── index.js
 │   ├── assets
+│   │   ├── cui.png
 │   │   ├── logo.png
-│   │   ├── user.png
-│   │   └── cui.png
+│   │   └── user.png
 │   ├── components
 │   │   ├── Charts.vue
 │   │   ├── Developing.vue
@@ -68,14 +71,15 @@
 │   │   ├── state.js
 │   │   └── types.js
 │   ├── styles
-│   │   └── common.less
+│   │   ├── common.less
+│   │   └── searchPanel.less
 │   ├── utils
 │   │   └── iview.js
 │   └── views
+│       ├── About.vue
 │       ├── Home.vue
 │       ├── LogView.vue
-│       ├── Visits.vue
-│       └── About.vue
+│       └── Visits.vue
 │   ├── App.vue
 │   └── main.js
 ├── static
