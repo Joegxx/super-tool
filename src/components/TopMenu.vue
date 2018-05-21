@@ -84,7 +84,7 @@ export default {
   cursor: default;
   > img {
     border-radius: 100%;
-    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,.1), inset 13px 6px 27px rgba(255,255,255,.1);
   }
   > span {
     color: #495060;
