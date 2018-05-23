@@ -22,7 +22,7 @@ const iview = {
   Col,
   Menu,
   MenuItem: Menu.Item,
-  Submenu: Menu.Sub,
+  MenuGroup: Menu.Group,
   Card,
   Select,
   Option,

@@ -1,26 +1,18 @@
 <template>
-  <Menu :active-name="activeName" width="auto" :open-names="openNames" @on-select="onSelect" ref="menu">
-    <Submenu v-for="menu in menus" :name="menu.name" :key="menu.name">
-      <template slot="title">
-        <Icon :type="menu.icon"></Icon>
-        <span>{{ menu.text }}</span>
-      </template>
+  <Menu :active-name="activeName" width="auto" @on-select="onSelect" ref="menu">
+    <MenuGroup v-for="menu in menus" :title="menu.text" :key="menu.name">
       <MenuItem v-for="item in menu.children" :name="item.name" :key="item.name">
+        <Icon :type="item.icon"></Icon>
         {{ item.text }}
       </MenuItem>
-    </Submenu>
+    </MenuGroup>
   </Menu>
 </template>
 
 <script>
 export default {
-  props: ['menus', 'activeName', 'openNames'],
+  props: ['menus', 'activeName'],
   watch: {
-    openNames () {
-      this.$nextTick(() => {
-        this.$refs.menu.updateOpened()
-      })
-    },
     activeName () {
       this.$nextTick(() => {
         this.$refs.menu.updateActiveName()
@@ -34,17 +26,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less">
-  .ivu-menu-submenu-title {
-    > i {
-      font-size: 16px;
-    }
-    > i, > span {
-      vertical-align: middle;
-    }
-  }
-  .left-menu.ivu-menu {
-    padding: 10px 0;
-  }
-</style>

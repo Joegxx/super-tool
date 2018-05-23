@@ -1,0 +1,116 @@
+@header-height: 65px;
+@logo-height: 40px;
+@nav-top-width: 210px;
+
+.layout {
+  background: #eee;
+  padding: 1px;
+}
+
+.layout-header {
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 1px;
+  height: @header-height;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #fff;
+  >.ivu-menu-horizontal {
+    height: 100%;
+    line-height: @header-height;
+    .ivu-menu-item {
+      >i {
+        font-size: 20px;
+      }
+      >i,
+      >span {
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.layout-logo {
+  height: @logo-height;
+  position: absolute;
+  top: (@header-height - @logo-height)/2;
+  left: 50px;
+  cursor: pointer;
+  >img {
+    display: inline-block;
+    height: 100%;
+  }
+  >span:extend(.layout-logo > img) {
+    font-size: 20px;
+    color: #2b3641;
+    vertical-align: top;
+    line-height: @logo-height;
+    margin-left: 15px;
+  }
+}
+
+.layout-nav {
+  width: @nav-top-width;
+  margin: 0 auto;
+  height: @header-height;
+}
+
+.layout-user:extend(.layout-logo all) {
+  left: auto;
+  right: 50px;
+  cursor: default;
+  >img {
+    border-radius: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .1), inset 13px 6px 27px rgba(255, 255, 255, .1);
+  }
+  >span {
+    color: #495060;
+    font-size: 14px;
+    margin-left: 6px;
+  }
+}
+
+.layout-content {
+  min-height: 400px;
+  margin: @header-height+15 auto 15px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+  .left-menu.ivu-menu {
+    padding: 10px 0;
+    .ivu-menu-item {
+      padding-left: 34px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.layout-content-main {
+  padding: 30px;
+}
+
+.layout-footer {
+  text-align: center;
+  padding: 15px 0;
+  color: #666;
+  background: #fff;
+}
+
+@media (max-width: 768px) {
+  @new-height: @header-height*2;
+  .layout {
+    .layout-header {
+      height: @new-height;
+    }
+    .layout-nav {
+      padding-top: @header-height;
+    }
+    .layout-content {
+      margin-top: @new-height + 15;
+    }
+  }
+}

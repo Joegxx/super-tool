@@ -5,7 +5,6 @@ export const LayoutMixin = {
     return {
       activeTopMenu: this.$route.name,
       activeLeftMenu: this.$route.name,
-      openLeftMenus: [],
       curPageName: this.$route.name
     }
   },

@@ -22,14 +22,14 @@
       <li>
         <div>
           <span>时间</span>
-          <RadioGroup v-model='currentDateType' type='button' class='search-date-type'>
-            <Radio v-for='item in DATETYPES' :label='item.value' :key='item.value'>{{ item.text }}</Radio>
+          <RadioGroup v-model="currentDateType" type="button" class="search-date-type">
+            <Radio v-for="item in DATETYPES" :label="item.value" :key="item.value">{{ item.text }}</Radio>
           </RadioGroup>
-          <DatePicker v-model="currentTime" type="datetimerange" placeholder="选择日期和时间" class="search-date" :editable="false" @on-open-change='currentDateType=-1'></DatePicker>
+          <DatePicker v-model="currentTime" type="datetimerange" placeholder="选择日期和时间" class="search-date" :editable="false" @on-change="getLogs" @on-open-change='currentDateType=-1'></DatePicker>
         </div>
       </li>
     </ul>
-    <Table border :columns="columns" :data="rows" @on-sort-change="sortLogs"></Table>
+    <Table border :loading="loading" :columns="columns" :data="rows" @on-sort-change="sortLogs"></Table>
     <Page :total="total" :current="currentPage" :page-size="pageSize" @on-change="changePage" show-elevator show-total class="pager"></Page>
   </div>
 </template>
@@ -71,22 +71,27 @@ const DATETYPES = [
     value: -1
   }
 ]
+const dataTimeRange = ['2017-04-06 16:00:00', '2017-04-06 17:00:00']
 const types = ['SuperEnvMall.Server', 'SuperIT.Server']
 export default {
   mixins: [LayoutMixin],
   data () {
     return {
       activeTopMenu: 'home',
-      openLeftMenus: ['operations'],
+      loading: true,
       columns: [
         {
           title: '时间',
           key: 'time',
-          sortable: 'custom'
+          sortable: 'custom',
+          maxWidth: 200,
+          ellipsis: true
         },
         {
           title: '级别',
           key: 'level',
+          width: 80,
+          align: 'center',
           render: (h, params) => {
             const lv = LEVEL[params.row.level]
             return h('div', {
@@ -109,7 +114,9 @@ export default {
         },
         {
           title: '主机',
-          key: 'ip'
+          key: 'ip',
+          maxWidth: 200,
+          ellipsis: true
         },
         {
           title: '消息',
@@ -119,7 +126,7 @@ export default {
         {
           title: '操作',
           key: 'action',
-          width: 100,
+          width: 80,
           align: 'center',
           render: (h, params) => {
             return h('div', [
@@ -146,7 +153,7 @@ export default {
       currentLevel: -1,
       DATETYPES,
       currentDateType: -1,
-      currentTime: ['2017-04-06 16:00:00', '2017-04-06 17:00:00'],
+      currentTime: dataTimeRange,
       searchText: '',
       sortKey: 'time',
       order: 'desc'
@@ -170,31 +177,28 @@ export default {
     currentLevel () {
       this.getLogs()
     },
-    currentTime () {
-      this.getLogs()
-    },
     searchText () {
       this.getLogs()
     },
     currentDateType () {
-      let [start, end] = this.currentTime
+      let range = dataTimeRange
       const fmt = 'YYYY-MM-DD HH:mm:ss'
       const now = this.$moment().endOf('day').format(fmt)
       switch (this.currentDateType) {
         case 0:
-          end = now
-          start = this.$moment().startOf('day').format(fmt)
+          range = [this.$moment().startOf('day').format(fmt), now]
           break
         case 1:
-          end = now
-          start = this.$moment().subtract(2, 'days').startOf('day').format(fmt)
+          range = [this.$moment().subtract(2, 'days').startOf('day').format(fmt), now]
           break
       }
-      this.currentTime = [start, end]
+      this.currentTime = range
+      this.getLogs()
     }
   },
   methods: {
     getLogs () {
+      this.loading = true
       this.$store.dispatch(GET_LOGS, {
         page: {
           current: this.currentPage,
@@ -211,6 +215,7 @@ export default {
           order: this.order
         }
       }).then(() => {
+        this.loading = false
         this.setContentHeight()
       })
     },
@@ -254,5 +259,10 @@ export default {
   float: right;
   width: 300px;
   padding-right: 0;
+}
+@media (max-width: 768px) {
+  .search-box {
+    float: left;
+  }
 }
 </style>

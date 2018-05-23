@@ -1,49 +1,46 @@
+const pageTitles = {
+  home: '首页',
+  about: '项目介绍',
+  logview: '日志查看',
+  visits: '访问统计'
+}
 const topMenus = [{
   name: 'home',
-  text: '首页',
+  text: pageTitles.home,
   icon: 'home'
 }, {
   name: 'about',
-  text: '关于',
-  icon: 'information-circled'
+  text: '帮助',
+  icon: 'ios-help'
 }]
 const leftMenus = {
   home: [{
-    name: 'operations',
     text: '运维工具',
-    icon: 'wrench',
     children: [{
       name: 'logview',
-      text: '日志查看',
+      text: pageTitles.logview,
       icon: 'ios-paper-outline',
       color: '#0c9'
     }, {
       name: 'visits',
-      text: '访问统计',
+      text: pageTitles.visits,
       icon: 'ios-pulse',
       color: '#39f'
     }]
   }],
   about: [{
-    name: 'about',
     text: '关于',
-    icon: 'information-circled',
     children: [{
       name: 'about',
-      text: '项目介绍'
+      text: pageTitles.about,
+      icon: 'information-circled'
     }]
   }]
 }
-const pageTitles = {
-  home: '首页',
-  about: '关于',
-  logview: '日志查看',
-  visits: '访问统计'
-}
+
 export default {
   activeTopMenu: '',
   activeLeftMenu: '',
-  openLeftMenus: [],
   topMenus,
   leftMenus,
   pageTitles,

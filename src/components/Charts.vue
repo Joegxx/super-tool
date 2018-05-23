@@ -27,9 +27,9 @@ export default {
     this.setLoading()
     const defaults = {
       grid: {
-        top: 40,
+        top: 50,
         right: 40,
-        bottom: 40,
+        bottom: 30,
         left: 40
       },
       tooltip: {},

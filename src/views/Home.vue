@@ -16,12 +16,6 @@ import { mapGetters } from 'vuex'
 import { LayoutMixin } from '@/mixins'
 export default {
   mixins: [LayoutMixin],
-  data () {
-    return {
-      activeLeftMenu: '',
-      openLeftMenus: ['operations']
-    }
-  },
   computed: {
     ...mapGetters(['curChildMenus'])
   }

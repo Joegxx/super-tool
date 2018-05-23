@@ -1,18 +1,18 @@
 <template>
   <div>
-    <ul class='search-panel'>
+    <ul class="search-panel">
       <li>
         <div>
           <span>时间</span>
-          <RadioGroup v-model='currentDateType' type='button' class='search-date-type'>
-            <Radio v-for='item in DATETYPES' :label='item.value' :key='item.value'>{{ item.text }}</Radio>
+          <RadioGroup v-model="currentDateType" type="button" class="search-date-type">
+            <Radio v-for="item in DATETYPES" :label="item.value" :key="item.value">{{ item.text }}</Radio>
           </RadioGroup>
-          <DatePicker v-model='currentDate' type='daterange' placeholder='选择日期' class='search-date' :editable='false' @on-open-change='currentDateType=-1'></DatePicker>
+          <DatePicker v-model="currentDate" type="daterange" placeholder="选择日期" class="search-date" :editable="false" @on-change="getProjectVistis" @on-open-change="currentDateType=-1"></DatePicker>
         </div>
       </li>
     </ul>
-    <charts id='project-chart' class='visit-chart' :options="projectChartOptions" :loading="projectLoading" ref="projectChart" @click="clickProject"></charts>
-    <charts v-if="showModuleChart" id='module-chart' class='visit-chart' :options="moduleChartOptions" :loading="moduleLoading" ref="moduleChart"></charts>
+    <charts id="project-chart" class="visit-chart" :options="projectChartOptions" :loading="projectLoading" ref="projectChart" @click="clickProject"></charts>
+    <charts v-if="showModuleChart" id="module-chart" class="visit-chart" :options="moduleChartOptions" :loading="moduleLoading" ref="moduleChart"></charts>
   </div>
 </template>
 
@@ -43,6 +43,7 @@ const barStyle = {
     }
   }
 }
+const dateRange = ['2017-06-01', '2017-06-03']
 const projectNames = ['SuperIT', 'SuperEnvMall', 'SuperLAB']
 export default {
   mixins: [LayoutMixin],
@@ -50,9 +51,8 @@ export default {
   data () {
     return {
       activeTopMenu: 'home',
-      openLeftMenus: ['operations'],
       currentDateType: -1,
-      currentDate: ['2017-06-01', '2017-06-03'],
+      currentDate: dateRange,
       DATETYPES,
       showModuleChart: false
     }
@@ -107,7 +107,8 @@ export default {
           textStyle: {
             fontSize: 12
           },
-          left: 'center'
+          left: 'center',
+          top: 10
         },
         xAxis: {
           data: xData
@@ -131,24 +132,20 @@ export default {
     this.getProjectVistis()
   },
   watch: {
-    currentDate () {
-      this.getProjectVistis()
-    },
     currentDateType () {
-      let [start, end] = this.currentDate
+      let range = dateRange
       const fmt = 'YYYY-MM-DD'
       const now = this.$moment().format(fmt)
       switch (this.currentDateType) {
         case 0:
-          end = now
-          start = this.$moment().subtract(6, 'days').format(fmt)
+          range = [this.$moment().subtract(6, 'days').format(fmt), now]
           break
         case 1:
-          end = now
-          start = this.$moment().subtract(1, 'months').format(fmt)
+          range = [this.$moment().subtract(1, 'months').format(fmt), now]
           break
       }
-      this.currentDate = [start, end]
+      this.currentDate = range
+      this.getProjectVistis()
     }
   },
   methods: {
@@ -185,6 +182,6 @@ export default {
 @import '../styles/searchPanel.less';
 .visit-chart {
   height: 400px;
-  padding: 10px 0;
+  padding-top: 10px;
 }
 </style>

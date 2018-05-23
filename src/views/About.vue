@@ -21,8 +21,7 @@ export default {
   mixins: [LayoutMixin],
   data () {
     return {
-      activeLeftMenu: 'about',
-      openLeftMenus: ['about'],
+      activeTopMenu: 'about',
       skills: ['Vue.js', 'Vue-router', 'Vuex', 'Vue-cli', 'iView', 'Webpack', 'ES6', 'Less', 'Axios']
     }
   }
