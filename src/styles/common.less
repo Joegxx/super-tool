@@ -7,10 +7,11 @@
 }
 ::-webkit-scrollbar-thumb {
     background-color: @scrollbar-thumb-bgColor;
+    -webkit-border-radius: 3px;
     &:hover {
-        background-color: lighten(@scrollbar-thumb-bgColor,10%);
+        background-color: darken(@scrollbar-thumb-bgColor,5%);
     }
 }
 ::-webkit-scrollbar-track-piece {
-    background-color: lighten(@scrollbar-thumb-bgColor,20%);
+    background-color: #eee;
 }
