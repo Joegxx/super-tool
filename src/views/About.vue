@@ -22,7 +22,7 @@ export default {
   data () {
     return {
       activeTopMenu: 'about',
-      skills: ['Vue.js', 'Vue-router', 'Vuex', 'Vue-cli', 'iView', 'Webpack', 'ES6', 'Less', 'Axios']
+      skills: ['Vue.js', 'Vue-router', 'Vuex', 'Vue-cli', 'iView', 'Webpack', 'ES6', 'Less', 'ECharts', 'Axios']
     }
   }
 }
