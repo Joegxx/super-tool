@@ -24,6 +24,7 @@
 - Webpack
 - ES6
 - Less
+- ECharts
 - Axios
 
 ## 项目结构
