@@ -16,7 +16,7 @@
       </Row>
     </div>
     <div class="layout-footer">
-      2017 &copy; Gonglei
+      2017-2018 &copy; Gonglei
     </div>
     <BackTop :height="50" :duration="700"></BackTop>
   </div>

@@ -6,14 +6,20 @@ const LOGURL = `${RESTHOST}logs`
 const VISITURL = `${RESTHOST}visits`
 
 export function getLogs ({ page, query, sort }, success) {
+  let { type, level, text, time } = query
+  let { size, current } = page
+  let { key, order } = sort
   return axios.post(LOGURL, {
     query: {
-      type: 'SuperEnvMall.Server'
+      type,
+      level: level === -1 ? undefined : level,
+      message: { $regex: text, $options: 'i' },
+      time: { $gte: time[0], $lte: time[1] }
     },
-    options: {
-      sort: '-time',
-      limit: 10,
-      skip: 10
+    option: {
+      sort: { [key]: order },
+      limit: size,
+      skip: (current - 1) * size
     }
   }).then(response => {
     let result = response.data
@@ -23,10 +29,14 @@ export function getLogs ({ page, query, sort }, success) {
 }
 
 const getProjectVistis = ({ names, date }, success) => {
-  return axios.get(VISITURL).then(response => {
-    const totalData = response.data.data
-    const projectData = { xData: [], yData: {} }
-    const { xData, yData } = projectData
+  return axios.post(VISITURL, {
+    query: {
+      date: { $gte: date[0], $lte: date[1] }
+    }
+  }).then(response => {
+    let totalData = response.data
+    let projectData = { xData: [], yData: {} }
+    let { xData, yData } = projectData
     if (date && date.length === 2) {
       let [start, end] = date
       if (start && end) {
@@ -53,21 +63,16 @@ const getProjectVistis = ({ names, date }, success) => {
   })
 }
 
-const getModuleVistis = ({ project, date }, success) => {
-  return axios.get(VISITURL).then(response => {
-    const totalData = response.data.data
-    let data = []
-    const moduleData = { xData: [], yData: [] }
+const getModuleVistis = (query, success) => {
+  return axios.post(VISITURL, {
+    query
+  }).then(response => {
+    let { data } = response
+    let moduleData = { xData: [], yData: [] }
     let { xData, yData } = moduleData
-    if (date) {
-      data = totalData.filter(item => item.date === date)
-      if (project) {
-        data = data.filter(item => item.project === project)
-      }
-      for (let { module, usercount } of data) {
-        xData.push(module)
-        yData.push(usercount)
-      }
+    for (let { module, usercount } of data) {
+      xData.push(module)
+      yData.push(usercount)
     }
     success({ moduleData, moduleLoading: false })
     return moduleData

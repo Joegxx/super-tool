@@ -1,5 +1,5 @@
 import { GET_VISITS } from '../types'
-import { getVistis } from '@/api'
+import { getVistis } from '@/api/rest'
 
 export default {
   state: {

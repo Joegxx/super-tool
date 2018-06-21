@@ -25,7 +25,7 @@
           <RadioGroup v-model="currentDateType" type="button" class="search-date-type">
             <Radio v-for="item in DATETYPES" :label="item.value" :key="item.value">{{ item.text }}</Radio>
           </RadioGroup>
-          <DatePicker v-model="currentTime" type="datetimerange" placeholder="选择日期和时间" class="search-date" :editable="false" @on-change="getLogs" @on-open-change='currentDateType=-1'></DatePicker>
+          <DatePicker v-model="currentTime" type="datetimerange" placeholder="选择日期和时间" class="search-date" :clearable="false" :editable="false" @on-change="getLogs" @on-open-change='currentDateType=-1'></DatePicker>
         </div>
       </li>
     </ul>
@@ -72,6 +72,7 @@ const DATETYPES = [
   }
 ]
 const dataTimeRange = ['2017-04-06 16:00:00', '2017-04-06 17:00:00']
+const fmt = 'YYYY-MM-DD HH:mm:ss'
 const types = ['SuperEnvMall.Server', 'SuperIT.Server']
 export default {
   mixins: [LayoutMixin],
@@ -93,7 +94,7 @@ export default {
           width: 80,
           align: 'center',
           render: (h, params) => {
-            const lv = LEVEL[params.row.level]
+            let lv = LEVEL[params.row.level]
             return h('div', {
               style: {
                 color: lv.color
@@ -165,6 +166,11 @@ export default {
     },
     total () {
       return this.$store.state.Log.total
+    },
+    formatCurrentTime () {
+      let format = time => this.$moment(time).format(fmt)
+      let [start, end] = this.currentTime
+      return [format(start), format(end)]
     }
   },
   created () {
@@ -182,8 +188,7 @@ export default {
     },
     currentDateType () {
       let range = dataTimeRange
-      const fmt = 'YYYY-MM-DD HH:mm:ss'
-      const now = this.$moment().endOf('day').format(fmt)
+      let now = this.$moment().endOf('day').format(fmt)
       switch (this.currentDateType) {
         case 0:
           range = [this.$moment().startOf('day').format(fmt), now]
@@ -207,7 +212,7 @@ export default {
         query: {
           type: this.currentType,
           level: this.currentLevel,
-          time: this.currentTime,
+          time: this.formatCurrentTime,
           text: this.searchText
         },
         sort: {
@@ -220,8 +225,8 @@ export default {
       })
     },
     show (index) {
-      const row = this.rows[index]
-      const lv = LEVEL[row.level]
+      let row = this.rows[index]
+      let lv = LEVEL[row.level]
       this.$Modal[lv.type]({
         title: '日志详情',
         content: `时间：${row.time}<br>主机：${row.ip}<br>消息：${row.message}`
@@ -232,6 +237,9 @@ export default {
       this.getLogs()
     },
     sortLogs ({ key, order }) {
+      if (order === 'normal') {
+        return
+      }
       this.sortKey = key
       this.order = order
       this.getLogs()

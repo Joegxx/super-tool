@@ -7,7 +7,7 @@
           <RadioGroup v-model="currentDateType" type="button" class="search-date-type">
             <Radio v-for="item in DATETYPES" :label="item.value" :key="item.value">{{ item.text }}</Radio>
           </RadioGroup>
-          <DatePicker v-model="currentDate" type="daterange" placeholder="选择日期" class="search-date" :editable="false" @on-change="getProjectVistis" @on-open-change="currentDateType=-1"></DatePicker>
+          <DatePicker v-model="currentDate" type="daterange" placeholder="选择日期" class="search-date" :clearable="false" :editable="false" @on-change="getProjectVistis" @on-open-change="currentDateType=-1"></DatePicker>
         </div>
       </li>
     </ul>
@@ -44,6 +44,7 @@ const barStyle = {
   }
 }
 const dateRange = ['2017-06-01', '2017-06-03']
+const fmt = 'YYYY-MM-DD'
 const projectNames = ['SuperIT', 'SuperEnvMall', 'SuperLAB']
 export default {
   mixins: [LayoutMixin],
@@ -59,8 +60,8 @@ export default {
   },
   computed: {
     projectChartOptions () {
-      const series = []
-      const { xData, yData } = this.$store.state.Visit.projectData
+      let series = []
+      let { xData, yData } = this.$store.state.Visit.projectData
       for (let name of projectNames) {
         series.push({
           name: name,
@@ -68,7 +69,7 @@ export default {
           data: yData[name]
         })
       }
-      const totalSerie = {
+      let totalSerie = {
         type: 'line',
         name: '总人数',
         data: []
@@ -99,8 +100,8 @@ export default {
       return this.$store.state.Visit.projectLoading
     },
     moduleChartOptions () {
-      const { xData, yData } = this.$store.state.Visit.moduleData
-      const moduleQuery = this.$store.state.Visit.moduleQuery
+      let { xData, yData } = this.$store.state.Visit.moduleData
+      let moduleQuery = this.$store.state.Visit.moduleQuery
       return {
         title: {
           text: `日期：${moduleQuery.date} 项目：${moduleQuery.project || '全部'}`,
@@ -126,6 +127,11 @@ export default {
     },
     moduleLoading () {
       return this.$store.state.Visit.moduleLoading
+    },
+    formatCurrentDate () {
+      let format = date => this.$moment(date).format(fmt)
+      let [start, end] = this.currentDate
+      return [format(start), format(end)]
     }
   },
   created () {
@@ -134,8 +140,7 @@ export default {
   watch: {
     currentDateType () {
       let range = dateRange
-      const fmt = 'YYYY-MM-DD'
-      const now = this.$moment().format(fmt)
+      let now = this.$moment().format(fmt)
       switch (this.currentDateType) {
         case 0:
           range = [this.$moment().subtract(6, 'days').format(fmt), now]
@@ -155,7 +160,7 @@ export default {
         projectLoading: true,
         projectQuery: {
           names: projectNames,
-          date: this.currentDate
+          date: this.formatCurrentDate
         },
         moduleQuery: {}
       }).then(() => {
@@ -167,7 +172,7 @@ export default {
       this.$store.dispatch(GET_VISITS, {
         moduleLoading: true,
         moduleQuery: {
-          project: seriesName === '总人数' ? null : seriesName,
+          project: seriesName === '总人数' ? undefined : seriesName,
           date: name
         }
       }).then(() => {
