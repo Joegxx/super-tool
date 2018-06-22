@@ -1,6 +1,6 @@
 const pageTitles = {
   home: '首页',
-  about: '项目介绍',
+  about: '系统介绍',
   logview: '日志查看',
   visits: '访问统计'
 }

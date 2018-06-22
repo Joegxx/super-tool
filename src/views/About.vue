@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <h1>关于SuperTool</h1>
-    <p>SuperTool是基于Vue.js开发的系统，主要功能是监控其他系统的运行情况。</p>
+    <p>SuperTool主要功能包括日志查看，访问统计。系统采用前后端分离模式，前端基于Vue.js，后端基于Koa+MongoDB。</p>
     <h2>技术栈</h2>
     <ul class="skills">
       <li v-for="item in skills">
