@@ -25,7 +25,7 @@
           <RadioGroup v-model="currentDateType" type="button" class="search-date-type">
             <Radio v-for="item in DATETYPES" :label="item.value" :key="item.value">{{ item.text }}</Radio>
           </RadioGroup>
-          <DatePicker v-model="currentTime" type="datetimerange" placeholder="选择日期和时间" class="search-date" :clearable="false" :editable="false" @on-change="getLogs" @on-open-change='currentDateType=-1'></DatePicker>
+          <DatePicker v-model="currentTime" type="datetimerange" placeholder="选择日期和时间" class="search-date" :editable="false" @on-change="getLogs" @on-open-change='currentDateType=-1'></DatePicker>
         </div>
       </li>
     </ul>
@@ -168,7 +168,9 @@ export default {
       return this.$store.state.Log.total
     },
     formatCurrentTime () {
-      let format = time => this.$moment(time).format(fmt)
+      let format = time => {
+        return time && this.$moment(time).format(fmt)
+      }
       let [start, end] = this.currentTime
       return [format(start), format(end)]
     }

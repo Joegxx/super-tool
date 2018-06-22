@@ -9,7 +9,8 @@
       </li>
     </ul>
     <h2>源代码</h2>
-    <p><Icon type="social-github"></Icon><a href="https://github.com/igonglei/super-tool" target="_blank">SuperTool</a></p>
+    <p><Icon type="social-github"></Icon><a href="https://github.com/igonglei/super-tool" target="_blank">SuperTool(前端)</a></p>
+    <p><Icon type="social-github"></Icon><a href="https://github.com/igonglei/super-tool-server" target="_blank">SuperTool-Server(后端)</a></p>
     <h2>其他作品</h2>
     <p><img  src="../assets/cui.png"><a href="https://igonglei.github.io/clean-ui" target="_blank">CleanUI</a></p>
   </div>
@@ -22,7 +23,7 @@ export default {
   data () {
     return {
       activeTopMenu: 'about',
-      skills: ['Vue.js', 'Vue-router', 'Vuex', 'Vue-cli', 'iView', 'Webpack', 'ES6', 'Less', 'ECharts', 'Axios']
+      skills: ['Vue.js', 'Vue-router', 'Vuex', 'Vue-cli', 'iView', 'Koa', 'MongoDB', 'Webpack', 'ES6', 'Less', 'ECharts', 'Axios']
     }
   }
 }

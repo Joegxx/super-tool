@@ -52,12 +52,12 @@ const getProjectVistis = ({ names, date }, success) => {
     if (date && date.length === 2) {
       let [start, end] = date
       if (start && end) {
-        let fmt = 'YYYY-MM-DD'
-        start = moment(start).format(fmt)
-        end = moment(end).add(1, 'days').format(fmt)
-        let diff = moment(end).diff(moment(start), 'days')
+        const fmt = 'YYYY-MM-DD'
+        let dtStart = moment(start).format(fmt)
+        let dtEnd = moment(end).add(1, 'days').format(fmt)
+        let diff = moment(dtEnd).diff(moment(dtStart), 'days')
         for (let i = 0; i < diff; i++) {
-          let dateStr = moment(start).add(i, 'days').format(fmt)
+          let dateStr = moment(dtStart).add(i, 'days').format(fmt)
           xData.push(dateStr)
           let data = totalData.filter(item => item.date === dateStr)
           for (let name of names) {

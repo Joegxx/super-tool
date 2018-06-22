@@ -7,7 +7,7 @@
           <RadioGroup v-model="currentDateType" type="button" class="search-date-type">
             <Radio v-for="item in DATETYPES" :label="item.value" :key="item.value">{{ item.text }}</Radio>
           </RadioGroup>
-          <DatePicker v-model="currentDate" type="daterange" placeholder="选择日期" class="search-date" :clearable="false" :editable="false" @on-change="getProjectVistis" @on-open-change="currentDateType=-1"></DatePicker>
+          <DatePicker v-model="currentDate" type="daterange" placeholder="选择日期" class="search-date" :editable="false" @on-change="getProjectVistis" @on-open-change="currentDateType=-1"></DatePicker>
         </div>
       </li>
     </ul>
@@ -129,7 +129,9 @@ export default {
       return this.$store.state.Visit.moduleLoading
     },
     formatCurrentDate () {
-      let format = date => this.$moment(date).format(fmt)
+      let format = date => {
+        return date && this.$moment(date).format(fmt)
+      }
       let [start, end] = this.currentDate
       return [format(start), format(end)]
     }

@@ -9,12 +9,13 @@ export function getLogs ({ page, query, sort }, success) {
   let { type, level, text, time } = query
   let { size, current } = page
   let { key, order } = sort
+  let [start, end] = time
   return axios.post(LOGURL, {
     query: {
       type,
       level: level === -1 ? undefined : level,
       message: { $regex: text, $options: 'i' },
-      time: { $gte: time[0], $lte: time[1] }
+      time: start ? { $gte: start, $lte: end } : undefined
     },
     option: {
       sort: { [key]: order },
@@ -29,32 +30,30 @@ export function getLogs ({ page, query, sort }, success) {
 }
 
 const getProjectVistis = ({ names, date }, success) => {
+  let [start, end] = date
   return axios.post(VISITURL, {
     query: {
-      date: { $gte: date[0], $lte: date[1] }
+      date: { $gte: start, $lte: end }
     }
   }).then(response => {
     let totalData = response.data
     let projectData = { xData: [], yData: {} }
-    let { xData, yData } = projectData
-    if (date && date.length === 2) {
-      let [start, end] = date
-      if (start && end) {
-        const fmt = 'YYYY-MM-DD'
-        start = moment(start).format(fmt)
-        end = moment(end).add(1, 'days').format(fmt)
-        const diff = moment(end).diff(moment(start), 'days')
-        for (let i = 0; i < diff; i++) {
-          const dateStr = moment(start).add(i, 'days').format(fmt)
-          xData.push(dateStr)
-          const data = totalData.filter(item => item.date === dateStr)
-          for (let name of names) {
-            const mData = data.filter(item => item.project === name)
-            const count = mData.length && mData.map(m => m.usercount).reduce((prev, cur) => prev + cur)
-            const oData = yData[name] || []
-            oData.push(count)
-            yData[name] = oData
-          }
+    if (start && end) {
+      let { xData, yData } = projectData
+      const fmt = 'YYYY-MM-DD'
+      let dtStart = moment(start).format(fmt)
+      let dtEnd = moment(end).add(1, 'days').format(fmt)
+      let diff = moment(dtEnd).diff(moment(dtStart), 'days')
+      for (let i = 0; i < diff; i++) {
+        let dateStr = moment(dtStart).add(i, 'days').format(fmt)
+        xData.push(dateStr)
+        let data = totalData.filter(item => item.date === dateStr)
+        for (let name of names) {
+          let mData = data.filter(item => item.project === name)
+          let count = mData.length && mData.map(m => m.usercount).reduce((prev, cur) => prev + cur)
+          let oData = yData[name] || []
+          oData.push(count)
+          yData[name] = oData
         }
       }
     }
