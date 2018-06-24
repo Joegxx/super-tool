@@ -1,5 +1,5 @@
 import { GET_LOGS } from '../types'
-import { getLogs } from '@/api/rest'
+import { getLogs } from '@/api'
 
 export default {
   state: {
