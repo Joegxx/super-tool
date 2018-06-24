@@ -49,7 +49,8 @@
 │   └── visits.png
 ├── src
 │   ├── api
-│   │   └── index.js
+│   │   ├── index.js
+│   │   └── local.js
 │   ├── assets
 │   │   ├── cui.png
 │   │   ├── logo.png
@@ -85,7 +86,7 @@
 │   ├── App.vue
 │   └── main.js
 ├── static
-│   ├── favicon.png
+│   ├── favicon.ico
 │   └── data
 │       ├── logs.json
 │       └── visits.json
