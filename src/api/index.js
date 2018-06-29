@@ -10,17 +10,18 @@ export function getLogs ({ page, query, sort }, success) {
   let { size, current } = page
   let { key, order } = sort
   let [start, end] = time
-  return axios.post(LOGURL, {
-    query: {
-      type,
-      level: level === -1 ? undefined : level,
-      message: { $regex: text, $options: 'i' },
-      time: start ? { $gte: start, $lte: end } : undefined
-    },
-    option: {
-      sort: { [key]: order },
-      limit: size,
-      skip: (current - 1) * size
+  return axios.get(LOGURL, {
+    params: {
+      query: {
+        type,
+        level: level === -1 ? undefined : level,
+        message: { $regex: text, $options: 'i' },
+        time: start ? { $gte: start, $lte: end } : undefined
+      },
+      page: current,
+      size,
+      sort: key,
+      order
     }
   }).then(response => {
     let result = response.data
@@ -31,9 +32,11 @@ export function getLogs ({ page, query, sort }, success) {
 
 const getProjectVistis = ({ names, date }, success) => {
   let [start, end] = date
-  return axios.post(VISITURL, {
-    query: {
-      date: { $gte: start, $lte: end }
+  return axios.get(VISITURL, {
+    params: {
+      query: {
+        date: { $gte: start, $lte: end }
+      }
     }
   }).then(response => {
     let totalData = response.data
@@ -63,8 +66,10 @@ const getProjectVistis = ({ names, date }, success) => {
 }
 
 const getModuleVistis = (query, success) => {
-  return axios.post(VISITURL, {
-    query
+  return axios.get(VISITURL, {
+    params: {
+      query
+    }
   }).then(response => {
     let { data } = response
     let moduleData = { xData: [], yData: [] }
