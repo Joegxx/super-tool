@@ -1,9 +1,9 @@
 import axios from 'axios'
 import moment from 'moment'
 
-const RESTHOST = 'http://localhost:3000/'
-const LOGURL = `${RESTHOST}logs`
-const VISITURL = `${RESTHOST}visits`
+const RESTHOST = 'http://localhost:3000/api/v1'
+const LOGURL = `${RESTHOST}/logs`
+const VISITURL = `${RESTHOST}/visits`
 
 export function getLogs ({ page, query, sort }, success) {
   let { type, level, text, time } = query
