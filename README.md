@@ -2,6 +2,10 @@
 
 > 基于Vue.js的辅助运维工具
 
+## 后端
+
+### [项目地址](https://github.com/igonglei/super-tool-server)
+
 ## 预览
 
 ### [在线预览](https://igonglei.github.io/super-tool/)
