@@ -40,19 +40,19 @@ import { GET_LOGS } from '@/store/types'
 const LEVEL = [
   {
     text: '一般',
-    icon: 'information-circled',
+    icon: 'ios-information-circle',
     color: '#39f',
     type: 'info'
   },
   {
     text: '警告',
-    icon: 'android-alert',
+    icon: 'ios-alert',
     color: '#f90',
     type: 'warning'
   },
   {
     text: '错误',
-    icon: 'close-circled',
+    icon: 'ios-close-circle',
     color: '#f30',
     type: 'error'
   }

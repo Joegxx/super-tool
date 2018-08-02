@@ -41,6 +41,7 @@ Object.keys(iview).forEach((key) => {
   Vue.component(key, iview[key])
 })
 
+Vue.prototype.$IVIEW = {}
 Vue.prototype.$Modal = Modal
 
 export default iview

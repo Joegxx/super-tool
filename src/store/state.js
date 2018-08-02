@@ -2,16 +2,17 @@ const pageTitles = {
   home: '首页',
   about: '系统介绍',
   logview: '日志查看',
-  visits: '访问统计'
+  visits: '访问统计',
+  apilist: '接口列表'
 }
 const topMenus = [{
   name: 'home',
   text: pageTitles.home,
-  icon: 'home'
+  icon: 'ios-home'
 }, {
   name: 'about',
   text: '帮助',
-  icon: 'ios-help'
+  icon: 'ios-help-circle'
 }]
 const leftMenus = {
   home: [{
@@ -24,8 +25,13 @@ const leftMenus = {
     }, {
       name: 'visits',
       text: pageTitles.visits,
-      icon: 'ios-pulse',
+      icon: 'ios-pulse-outline',
       color: '#39f'
+    }, {
+      name: 'apilist',
+      text: pageTitles.apilist,
+      icon: 'ios-barcode-outline',
+      color: '#57C534'
     }]
   }],
   about: [{
@@ -33,7 +39,7 @@ const leftMenus = {
     children: [{
       name: 'about',
       text: pageTitles.about,
-      icon: 'information-circled'
+      icon: 'ios-information-circle'
     }]
   }]
 }

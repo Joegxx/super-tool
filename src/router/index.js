@@ -6,6 +6,7 @@ Vue.use(Router)
 const Home = () => import('@/views/Home')
 const LogView = () => import('@/views/LogView')
 const Visits = () => import('@/views/Visits')
+const ApiList = () => import('@/views/ApiList')
 const About = () => import('@/views/About')
 
 export default new Router({
@@ -33,6 +34,11 @@ export default new Router({
       path: '/visits',
       name: 'visits',
       component: Visits
+    },
+    {
+      path: '/apilist',
+      name: 'apilist',
+      component: ApiList
     },
     {
       path: '/about',
