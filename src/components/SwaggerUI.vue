@@ -18,3 +18,9 @@ export default {
   }
 }
 </script>
+
+<style>
+  #swagger-ui .swagger-ui .wrapper {
+    padding: 0;
+  }
+</style>
