@@ -4,6 +4,7 @@ import state from './state'
 import { SET_COMMON } from './types'
 import Log from './modules/log'
 import Visit from './modules/visit'
+import Organization from './modules/organization'
 
 Vue.use(Vuex)
 
@@ -27,6 +28,7 @@ export default new Vuex.Store({
   },
   modules: {
     Log,
-    Visit
+    Visit,
+    Organization
   }
 })

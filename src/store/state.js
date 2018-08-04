@@ -3,7 +3,8 @@ const pageTitles = {
   about: '系统介绍',
   logview: '日志查看',
   visits: '访问统计',
-  apilist: '接口列表'
+  apilist: '接口列表',
+  organization: '组织结构'
 }
 const topMenus = [{
   name: 'home',
@@ -18,6 +19,11 @@ const leftMenus = {
   home: [{
     text: '运维工具',
     children: [{
+      name: 'organization',
+      text: pageTitles.organization,
+      icon: 'ios-people-outline',
+      color: '#6e92ce'
+    }, {
       name: 'logview',
       text: pageTitles.logview,
       icon: 'ios-paper-outline',

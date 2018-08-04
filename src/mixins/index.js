@@ -20,13 +20,9 @@ export const LayoutMixin = {
       }
       timeout = setTimeout(() => {
         this.setContentHeight()
-        const charts = this.$refs
-        Object.keys(charts).forEach(key => {
-          let chart = charts[key]
-          if (chart) {
-            chart.resize()
-          }
-        })
+        if (this.resize) {
+          this.resize()
+        }
       }, 100)
     }
   },

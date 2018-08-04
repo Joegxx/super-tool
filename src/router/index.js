@@ -7,6 +7,7 @@ const Home = () => import('@/views/Home')
 const LogView = () => import('@/views/LogView')
 const Visits = () => import('@/views/Visits')
 const ApiList = () => import('@/views/ApiList')
+const Organization = () => import('@/views/Organization')
 const About = () => import('@/views/About')
 
 export default new Router({
@@ -39,6 +40,11 @@ export default new Router({
       path: '/apilist',
       name: 'apilist',
       component: ApiList
+    },
+    {
+      path: '/organization',
+      name: 'organization',
+      component: Organization
     },
     {
       path: '/about',

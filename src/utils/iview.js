@@ -14,6 +14,7 @@ import Button from 'ivc/button'
 import DatePicker from 'ivc/date-picker'
 import Modal from 'ivc/modal'
 import BackTop from 'ivc/back-top'
+import Spin from 'ivc/spin'
 
 const iview = {
   LoadingBar,
@@ -34,7 +35,8 @@ const iview = {
   Button,
   DatePicker,
   Modal,
-  BackTop
+  BackTop,
+  Spin
 }
 
 Object.keys(iview).forEach((key) => {

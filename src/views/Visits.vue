@@ -180,6 +180,10 @@ export default {
       }).then(() => {
         this.setContentHeight()
       })
+    },
+    resize () {
+      this.$refs.projectChart.resize()
+      this.showModuleChart && this.$refs.moduleChart.resize()
     }
   }
 }

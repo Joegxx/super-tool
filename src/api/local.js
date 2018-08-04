@@ -2,11 +2,12 @@ import axios from 'axios'
 import moment from 'moment'
 
 const DATAPATH = 'static/data/'
-const LOGDATA = DATAPATH + 'logs.json'
-const VISITDATA = DATAPATH + 'visits.json'
+const LOG_DATA = DATAPATH + 'logs.json'
+const VISIT_DATA = DATAPATH + 'visits.json'
+const ORGANIZATION_DATA = DATAPATH + 'organization.json'
 
 export function getLogs ({ page, query, sort }, success) {
-  return axios.get(LOGDATA).then(response => {
+  return axios.get(LOG_DATA).then(response => {
     let totalRows = response.data.filter(item => item.type === query.type)
     let { key, order } = sort
     if (key === 'time') {
@@ -45,7 +46,7 @@ export function getLogs ({ page, query, sort }, success) {
 }
 
 const getProjectVistis = ({ names, date }, success) => {
-  return axios.get(VISITDATA).then(response => {
+  return axios.get(VISIT_DATA).then(response => {
     let totalData = response.data
     let projectData = { xData: [], yData: {} }
     let { xData, yData } = projectData
@@ -76,7 +77,7 @@ const getProjectVistis = ({ names, date }, success) => {
 }
 
 const getModuleVistis = ({ project, date }, success) => {
-  return axios.get(VISITDATA).then(response => {
+  return axios.get(VISIT_DATA).then(response => {
     let totalData = response.data
     let data = []
     let moduleData = { xData: [], yData: [] }
@@ -102,4 +103,12 @@ export function getVistis ({ projectQuery, moduleQuery }, success) {
   } else {
     return getProjectVistis(projectQuery, success)
   }
+}
+
+export function getOrganization (success) {
+  return axios.get(ORGANIZATION_DATA).then(response => {
+    let data = response.data
+    success({ data })
+    return data
+  })
 }

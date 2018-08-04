@@ -10,6 +10,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "@drawbotics/mxgraph": "^3.9.6",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "echarts": "^4.1.0",

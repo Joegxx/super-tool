@@ -1,5 +1,5 @@
 <template>
-  <VueSwaggerUI url="static/data/swagger.json" @onComplete='setContentHeight'></VueSwaggerUI>
+  <VueSwaggerUI id="swagger-ui" url="static/data/swagger.json" @onComplete='setContentHeight'></VueSwaggerUI>
 </template>
 
 <script>
@@ -15,3 +15,9 @@ export default {
   }
 }
 </script>
+
+<style>
+  #swagger-ui .swagger-ui .wrapper {
+    padding: 0;
+  }
+</style>
