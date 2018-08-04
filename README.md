@@ -30,6 +30,8 @@
 - Less
 - ECharts
 - Axios
+- Swagger-UI
+- mxGraph
 
 ## 项目结构
 ```
@@ -49,7 +51,7 @@
 │   ├── index.js
 │   └── prod.env.js
 ├── screenshots
-│   ├── logs.png
+│   ├── organization.png
 │   └── visits.png
 ├── src
 │   ├── api
@@ -64,6 +66,8 @@
 │   │   ├── Developing.vue
 │   │   ├── Layout.vue
 │   │   ├── LeftMenu.vue
+│   │   ├── Organization.vue
+│   │   ├── SwaggerUI.vue
 │   │   └── TopMenu.vue
 │   ├── mixins
 │   │   └── index.js
@@ -72,6 +76,7 @@
 │   ├── store
 │   │   ├── modules
 │   │   │   ├── log.js
+│   │   │   ├── organization.js
 │   │   │   └── visit.js
 │   │   ├── index.js
 │   │   ├── state.js
@@ -79,13 +84,16 @@
 │   ├── styles
 │   │   ├── common.less
 │   │   ├── layout.less
+│   │   ├── mxGraph.less
 │   │   └── searchPanel.less
 │   ├── utils
 │   │   └── iview.js
 │   └── views
 │       ├── About.vue
+│       ├── ApiList.vue
 │       ├── Home.vue
 │       ├── LogView.vue
+│       ├── Organization.vue
 │       └── Visits.vue
 │   ├── App.vue
 │   └── main.js
@@ -93,6 +101,8 @@
 │   ├── favicon.ico
 │   └── data
 │       ├── logs.json
+│       ├── organization.json
+│       ├── swagger.json
 │       └── visits.json
 ├── index.html
 ├── package.json
