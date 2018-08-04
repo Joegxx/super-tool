@@ -1,0 +1,145 @@
+{
+  "vertex":
+  {
+    "id": "pl",
+    "value":
+    {
+      "name": "PL",
+      "text": "项目经理"
+    },
+    "x": "center",
+    "y": 20,
+    "width": 60,
+    "height": 40,
+    "children": [
+    {
+      "id": "se",
+      "value":
+      {
+        "name": "SE",
+        "text": "开发"
+      },
+      "width": 60,
+      "height": 40,
+      "children": [
+      {
+        "id": "fe",
+        "value":
+        {
+          "name": "FE",
+          "text": "前端开发"
+        },
+        "width": 60,
+        "height": 40
+      },
+      {
+        "id": "mde",
+        "value":
+        {
+          "name": "MDE",
+          "text": "模块负责人"
+        },
+        "width": 60,
+        "height": 40,
+        "children": [
+        {
+          "id": "be",
+          "value":
+          {
+            "name": "BE",
+            "text": "后端开发"
+          },
+          "width": 60,
+          "height": 40
+        }]
+      },
+      {
+        "id": "dba",
+        "value":
+        {
+          "name": "DBA",
+          "text": "数据库开发"
+        },
+        "width": 60,
+        "height": 40
+      }]
+    },
+    {
+      "id": "bu",
+      "value":
+      {
+        "name": "BU",
+        "text": "需求负责人"
+      },
+      "width": 60,
+      "height": 40
+    },
+    {
+      "id": "tse",
+      "value":
+      {
+        "name": "TSE",
+        "text": "测试"
+      },
+      "width": 60,
+      "height": 40
+    },
+    {
+      "id": "us",
+      "value":
+      {
+        "name": "US",
+        "text": "用服"
+      },
+      "width": 60,
+      "height": 40
+    },
+    {
+      "id": "ui",
+      "value":
+      {
+        "name": "UI",
+        "text": "美工"
+      },
+      "width": 60,
+      "height": 40
+    }]
+  },
+  "edge": [
+  {
+    "sourceId": "pl",
+    "targetId": "bu"
+  },
+  {
+    "sourceId": "pl",
+    "targetId": "ui"
+  },
+  {
+    "sourceId": "pl",
+    "targetId": "se"
+  },
+  {
+    "sourceId": "pl",
+    "targetId": "tse"
+  },
+  {
+    "sourceId": "pl",
+    "targetId": "us"
+  },
+  {
+    "sourceId": "se",
+    "targetId": "fe"
+  },
+  {
+    "sourceId": "se",
+    "targetId": "mde"
+  },
+  {
+    "sourceId": "se",
+    "targetId": "dba"
+  },
+  {
+    "sourceId": "mde",
+    "targetId": "be"
+  }]
+}

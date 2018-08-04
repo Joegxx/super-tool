@@ -3,11 +3,11 @@
   "tags": [
   {
     "name": "log",
-    "description": "Operations about log"
+    "description": "日志相关接口"
   },
   {
     "name": "visit",
-    "description": "Operations about visit"
+    "description": "访问相关接口"
   }],
   "paths":
   {
@@ -16,7 +16,7 @@
       "get":
       {
         "tags": ["log"],
-        "summary": "Get logs",
+        "summary": "获取日志",
         "description": "",
         "operationId": "getLogs",
         "produces": ["application/json"],
@@ -110,7 +110,7 @@
       "post":
       {
         "tags": ["log"],
-        "summary": "Add log",
+        "summary": "添加日志",
         "description": "",
         "operationId": "addLog",
         "consumes": ["application/json"],
@@ -145,7 +145,7 @@
       "put":
       {
         "tags": ["log"],
-        "summary": "Update log",
+        "summary": "更新日志",
         "description": "",
         "operationId": "updateLog",
         "consumes": ["application/json"],
@@ -191,7 +191,7 @@
       "delete":
       {
         "tags": ["log"],
-        "summary": "Delete log",
+        "summary": "删除日志",
         "description": "",
         "operationId": "deleteLog",
         "produces": ["application/json"],
@@ -229,7 +229,7 @@
       "get":
       {
         "tags": ["visit"],
-        "summary": "Get user visits",
+        "summary": "获取用户访问数据",
         "description": "",
         "operationId": "getVisits",
         "produces": ["application/json"],
