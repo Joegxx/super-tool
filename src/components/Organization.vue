@@ -151,12 +151,13 @@ class TreeNodeShape extends mxCylinder {
     }
   }
 }
-TreeNodeShape.prototype.segment = 20
+TreeNodeShape.prototype.segment = 30
 mxCellRenderer.registerShape('treenode', TreeNodeShape)
 mxGraphView.prototype.updateFloatingTerminalPoint = function (edge, start, end, source) {
   let pt = null
   if (source) {
-    pt = new mxPoint(start.x + start.width / 2, start.y + start.height + TreeNodeShape.prototype.segment)
+    pt = new mxPoint(start.x + start.width / 2,
+    start.y + start.height + TreeNodeShape.prototype.segment * this.scale)
   } else {
     pt = new mxPoint(start.x + start.width / 2, start.y)
   }
