@@ -20,7 +20,9 @@ const {
   mxEdgeStyle,
   mxGraphView,
   mxPoint,
-  mxKeyHandler
+  mxKeyHandler,
+  mxEvent,
+  mxUtils
 } = mxgraph
 export default {
   props: ['id', 'data'],
@@ -51,27 +53,42 @@ export default {
       style[mxConstants.STYLE_SHAPE] = 'treenode'
       style[mxConstants.STYLE_GRADIENTCOLOR] = 'white'
       style[mxConstants.STYLE_SHADOW] = true
+      style[mxConstants.STYLE_FONTFAMILY] = 'Helvetica,Arial'
+      style[mxConstants.STYLE_FONTSIZE] = 14
       style = graph.getStylesheet().getDefaultEdgeStyle()
       style[mxConstants.STYLE_EDGE] = mxEdgeStyle.TopToBottom
       style[mxConstants.STYLE_ROUNDED] = true
       let layout = new mxCompactTreeLayout(graph, false)
       layout.useBoundingBox = false
       layout.edgeRouting = false
-      layout.levelDistance = 30
-      layout.nodeDistance = 20
+      layout.levelDistance = 35
+      layout.nodeDistance = 25
       let layoutMgr = new mxLayoutManager(graph)
       layoutMgr.getLayout = function (cell) {
         if (cell.getChildCount() > 0) {
           return layout
         }
       }
+      let toggleTooltip = (graph, display) => {
+        let tooltipHandler = graph.tooltipHandler
+        if (tooltipHandler != null) {
+          let div = tooltipHandler.div
+          if (div != null) {
+            div.style.display = display ? 'block' : 'none'
+          }
+        }
+      }
       graph.setTooltips(true)
       graph.getTooltipForCell = function (cell) {
+        toggleTooltip(this, true)
         return cell.value.text
       }
       graph.getLabel = function (cell) {
         return cell.value.name
       }
+      mxEvent.addListener(graph.container, 'mouseleave', mxUtils.bind(graph, function () {
+        toggleTooltip(this)
+      }))
       this.resize()
     },
     resize () {
@@ -105,6 +122,8 @@ export default {
         }
       } finally {
         graph.getModel().endUpdate()
+        graph.fit()
+        graph.center()
       }
     }
   }

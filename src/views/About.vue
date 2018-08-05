@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <h1>关于SuperTool</h1>
-    <p>SuperTool主要功能包括日志查看，访问统计。系统采用前后端分离模式，前端基于Vue.js，后端基于Koa+MongoDB。</p>
+    <p>辅助运维工具，功能包括组织结构，日志查看，访问统计，接口列表。系统采用前后端分离模式，前端基于Vue.js，后端基于Koa+MongoDB。</p>
     <h2>技术栈</h2>
     <ul class="skills">
       <li v-for="item in skills">
