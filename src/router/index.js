@@ -12,7 +12,7 @@ const About = () => import('@/views/About')
 
 export default new Router({
   mode: 'history',
-  base: '/',
+  base: process.env.BUILD_ENV === 'gh-pages' ? '/super-tool/' : '/',
   scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
