@@ -16,7 +16,7 @@
           </RadioGroup>
         </div>
         <div class="search-box">
-          <Input v-model="searchText" icon="ios-search" placeholder="请输入日志信息..."></Input>
+          <Input v-model="searchText" icon="ios-search" placeholder="请输入日志信息..." />
         </div>
       </li>
       <li>
@@ -30,7 +30,7 @@
       </li>
     </ul>
     <Table border :loading="loading" :columns="columns" :data="rows" @on-sort-change="sortLogs"></Table>
-    <Page :total="total" :current="currentPage" :page-size="pageSize" @on-change="changePage" show-elevator show-total class="pager"></Page>
+    <Page :total="total" :current="currentPage" :page-size="pageSize" @on-change="changePage" show-elevator show-total class="pager" />
   </div>
 </template>
 

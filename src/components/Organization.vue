@@ -4,9 +4,9 @@
 
 <script>
 /* eslint-disable new-cap, no-new */
-import '@drawbotics/mxgraph/javascript/src/css/common.css'
+import 'mxgraph/javascript/src/css/common.css'
 import '@/styles/mxGraph.less'
-const mxgraph = require('@drawbotics/mxgraph')({
+const mxgraph = require('mxgraph')({
   mxLoadStylesheets: false,
   mxLoadResources: false
 })
@@ -45,6 +45,7 @@ export default {
       graph.keepEdgesInBackground = true
       graph.setAutoSizeCells(true)
       graph.setCellsSelectable(false)
+      graph.setCellsEditable(false)
       graph.setAllowDanglingEdges(false)
       graph.setPanning(true)
       graph.panningHandler.useLeftButtonForPanning = true

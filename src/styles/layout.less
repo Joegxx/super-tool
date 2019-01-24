@@ -1,6 +1,6 @@
 @header-height: 65px;
 @logo-height: 40px;
-@nav-top-width: 210px;
+@nav-top-width: 700px;
 
 .layout {
   background: #eee;
@@ -19,13 +19,27 @@
   >.ivu-menu-horizontal {
     height: 100%;
     line-height: @header-height;
-    .ivu-menu-item {
-      >i {
+    .ivu-menu-item {     
+      float: none;
+      display: inline-block;
+
+      i {
         font-size: 20px;
       }
-      >i,
-      >span {
+      i,
+      span {
         vertical-align: middle;
+      }
+
+      >a {
+        color: #515a6e;
+        display: block;
+      }
+
+      &:hover {
+        >a {
+          color: #57a3f3;
+        }
       }
     }
   }
@@ -54,20 +68,33 @@
   width: @nav-top-width;
   margin: 0 auto;
   height: @header-height;
+  text-align: center;
 }
 
 .layout-user:extend(.layout-logo all) {
   left: auto;
   right: 50px;
   cursor: default;
-  >img {
+  .avatar {
     border-radius: 100%;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .1), inset 13px 6px 27px rgba(255, 255, 255, .1);
+    height: @logo-height;
+    will-change: transform;
+    transition: transform 0.3s ease-in-out;
+    
+    &:hover {
+      transform: rotate(360deg);
+    }
   }
-  >span {
-    color: #495060;
-    font-size: 14px;
-    margin-left: 6px;
+
+  .ivu-poptip-title {
+    display: none;
+  }
+
+  .mp-code {
+    width: 140px;
+    height: 140px;
+    display: block;
   }
 }
 
@@ -99,7 +126,7 @@
   background: #fff;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1085px) {
   @new-height: @header-height*2;
   .layout {
     .layout-header {

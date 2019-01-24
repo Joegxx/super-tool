@@ -3,7 +3,7 @@
     <li v-for="item in curChildMenus" :key="item.name" @click="$router.push({name:item.name})">
       <Card>
         <div class="tc">
-            <Icon :type="item.icon" :size="80" :color="item.color"></Icon>
+            <Icon :type="item.icon" :size="80" :color="item.color" />
             <p>{{ item.text }}</p>
         </div>
       </Card>

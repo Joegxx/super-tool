@@ -15,6 +15,7 @@ import DatePicker from 'ivc/date-picker'
 import Modal from 'ivc/modal'
 import BackTop from 'ivc/back-top'
 import Spin from 'ivc/spin'
+import Poptip from 'ivc/poptip'
 
 const iview = {
   LoadingBar,
@@ -36,7 +37,8 @@ const iview = {
   DatePicker,
   Modal,
   BackTop,
-  Spin
+  Spin,
+  Poptip
 }
 
 Object.keys(iview).forEach((key) => {

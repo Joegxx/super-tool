@@ -1,10 +1,10 @@
 <template>
   <div class="layout">
-    <top-menu :menus="topMenus" :active-name="activeTopMenu"></top-menu>
+    <TopMenu :menus="topMenus" :active-name="activeTopMenu" />
     <div class="layout-content">
       <Row>
         <Col :sm="4" :xs="0">
-          <left-menu :menus="curLeftMenus" :active-name="activeLeftMenu" class="left-menu"></left-menu>
+          <LeftMenu :menus="curLeftMenus" :active-name="activeLeftMenu" class="left-menu" />
         </Col>
         <Col :sm="20" :xs="24">
           <div class="layout-content-main">

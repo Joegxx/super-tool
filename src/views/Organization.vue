@@ -1,7 +1,7 @@
 <template>
   <div>
     <Spin fix v-if="loading"></Spin>
-    <Organization id="organization" :data="data" ref="organization"></Organization>
+    <Organization id="organization" :data="data" ref="organization" />
   </div>
 </template>
 

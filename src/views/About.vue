@@ -4,15 +4,13 @@
     <p>辅助运维工具，功能包括组织结构，日志查看，访问统计，接口列表。系统采用前后端分离模式，前端基于Vue.js，后端基于Koa+MongoDB。</p>
     <h2>技术栈</h2>
     <ul class="skills">
-      <li v-for="item in skills">
+      <li v-for="item in skills" :key="item">
         {{ item }}
       </li>
     </ul>
-    <h2>源代码</h2>
-    <p><Icon type="social-github"></Icon><a href="https://github.com/igonglei/super-tool" target="_blank">SuperTool(前端)</a></p>
-    <p><Icon type="social-github"></Icon><a href="https://github.com/igonglei/super-tool-server" target="_blank">SuperTool-Server(后端)</a></p>
-    <h2>其他作品</h2>
-    <p><img  src="../assets/cui.png"><a href="https://igonglei.github.io/clean-ui" target="_blank">CleanUI</a></p>
+    <h2>GitHub</h2>
+    <p><Icon type="social-github" /><a href="https://github.com/igonglei/super-tool" target="_blank">SuperTool(前端)</a></p>
+    <p><Icon type="social-github" /><a href="https://github.com/igonglei/super-tool-server" target="_blank">SuperTool-Server(后端)</a></p>
   </div>
 </template>
 
@@ -23,7 +21,7 @@ export default {
   data () {
     return {
       activeTopMenu: 'about',
-      skills: ['Vue.js', 'Vue-router', 'Vuex', 'Vue-cli', 'iView', 'Koa', 'MongoDB', 'Webpack', 'ES6', 'Less', 'ECharts', 'Axios', 'Swagger-UI', 'mxGraph']
+      skills: ['Vue.js', 'Vue-router', 'Vuex', 'iView', 'Koa', 'MongoDB', 'Webpack', 'ES6', 'Less', 'mxGraph', 'ECharts', 'Axios', 'Swagger-UI']
     }
   }
 }

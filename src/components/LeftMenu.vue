@@ -2,7 +2,7 @@
   <Menu :active-name="activeName" width="auto" @on-select="onSelect" ref="menu">
     <MenuGroup v-for="menu in menus" :title="menu.text" :key="menu.name">
       <MenuItem v-for="item in menu.children" :name="item.name" :key="item.name">
-        <Icon :type="item.icon"></Icon>
+        <Icon :type="item.icon" />
         {{ item.text }}
       </MenuItem>
     </MenuGroup>

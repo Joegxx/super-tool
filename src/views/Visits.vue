@@ -11,8 +11,8 @@
         </div>
       </li>
     </ul>
-    <charts id="project-chart" class="visit-chart" :options="projectChartOptions" :loading="projectLoading" ref="projectChart" @click="clickProject"></charts>
-    <charts v-if="showModuleChart" id="module-chart" class="visit-chart" :options="moduleChartOptions" :loading="moduleLoading" ref="moduleChart"></charts>
+    <Charts id="project-chart" class="visit-chart" :options="projectChartOptions" :loading="projectLoading" ref="projectChart" @click="clickProject" />
+    <Charts v-if="showModuleChart" id="module-chart" class="visit-chart" :options="moduleChartOptions" :loading="moduleLoading" ref="moduleChart" />
   </div>
 </template>
 
