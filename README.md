@@ -23,15 +23,14 @@
 - Vue.js
 - Vue-router
 - Vuex
-- Vue-cli
 - iView
 - Webpack
 - ES6
 - Less
+- mxGraph
 - ECharts
 - Axios
 - Swagger-UI
-- mxGraph
 
 ## 项目结构
 ```
@@ -63,7 +62,6 @@
 │   │   └── user.png
 │   ├── components
 │   │   ├── Charts.vue
-│   │   ├── Developing.vue
 │   │   ├── Layout.vue
 │   │   ├── LeftMenu.vue
 │   │   ├── Organization.vue
