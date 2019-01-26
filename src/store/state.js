@@ -10,17 +10,20 @@ const linkMenus = [{
   name: 'editor',
   text: '设计器',
   icon: 'ios-cloudy-outline',
-  href: '/clean-ui/editor.html'
+  href: '/clean-ui/editor.html',
+  cls: 'pc-menu'
 }, {
   name: 'lab',
   text: '实验室',
   icon: 'ios-cube-outline',
-  href: '/clean-ui/lab.html'
+  href: '/clean-ui/lab.html',
+  cls: 'pc-menu'
 }, {
   name: 'topo',
   text: '拓扑',
   icon: 'ios-link-outline',
-  href: '/clean-ui/topo.html'
+  href: '/clean-ui/topo.html',
+  cls: 'pc-menu'
 }, {
   name: 'cleanui',
   text: 'CleanUI',

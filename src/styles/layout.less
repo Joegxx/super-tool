@@ -65,7 +65,7 @@
 }
 
 .layout-nav {
-  width: @nav-top-width;
+  max-width: @nav-top-width;
   margin: 0 auto;
   height: @header-height;
   text-align: center;
@@ -137,6 +137,14 @@
     }
     .layout-content {
       margin-top: @new-height + 15;
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .layout-nav {
+    .ivu-menu-item.pc-menu {
+      display: none;
     }
   }
 }

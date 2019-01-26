@@ -6,7 +6,7 @@
         <span>SuperTool</span>
       </div>
       <div class="layout-nav">
-        <MenuItem v-for="item in menus" :name="item.name" :key="item.name">
+        <MenuItem v-for="item in menus" :name="item.name" :key="item.name" :class="item.cls">
           <template v-if="item.href">
             <a :href="item.href" target="_blank">
               <Icon :type="item.icon" />
